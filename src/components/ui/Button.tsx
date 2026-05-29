@@ -34,7 +34,7 @@ export function Button({
         },
         className,
       )}
-      disabled={disabled || isLoading}
+      disabled={disabled || isLoading} // eslint-disable-line @typescript-eslint/prefer-nullish-coalescing -- || is intentional: false ?? true would not disable
       {...props}
     >
       {isLoading && <Spinner className="mr-2" />}

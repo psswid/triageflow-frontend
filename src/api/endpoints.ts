@@ -12,8 +12,8 @@ export const ENDPOINTS = {
   },
   ADMIN: {
     STATS: '/api/admin/stats',
-    SUBMISSIONS: '/admin/submissions',
-    USERS: '/admin/users',
+    SUBMISSIONS: '/api/admin/submissions',
+    USERS: '/api/admin/users',
     SYNTHETIC_GENERATE: '/api/admin/synthetic/generate',
     IMPERSONATE: (id: string) => `/api/admin/users/${id}/impersonate`,
   },
