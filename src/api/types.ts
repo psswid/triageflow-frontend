@@ -43,21 +43,25 @@ export interface RegisterResponse {
 
 // --- Triage Submission ---
 export interface ConversationMessage {
-  readonly role: 'user' | 'assistant';
+  readonly type: 'initial_description' | 'question' | 'answer' | 'result';
   readonly content: string;
-  readonly type: 'initial_description' | 'follow_up' | 'answer' | 'result';
   readonly timestamp: string;
+}
+
+export interface TriageOutcome {
+  readonly specialist: string;
+  readonly urgency: string;
+  readonly justification: string;
 }
 
 export interface TriageSubmissionResource {
   readonly id: string;
   readonly type: 'triage_submission';
   readonly attributes: {
-    readonly status: 'pending' | 'processing' | 'completed' | 'failed';
+    readonly status: 'pending' | 'processing' | 'awaiting_answer' | 'completed' | 'failed';
     readonly isSynthetic: boolean;
-    readonly specialist: string | null;
-    readonly urgency: 'EMERGENCY' | 'HIGH' | 'MEDIUM' | 'LOW' | null;
-    readonly justification: string | null;
+    readonly outcome: TriageOutcome | null;
+    readonly currentTurn: number;
     readonly conversationHistory: readonly ConversationMessage[];
     readonly processingDuration: number | null;
     readonly submittedAt: string;
@@ -69,7 +73,7 @@ export interface TriageStatusResource {
   readonly id: string;
   readonly type: 'triage_submission';
   readonly attributes: {
-    readonly status: 'pending' | 'processing' | 'completed' | 'failed';
+    readonly status: 'pending' | 'processing' | 'awaiting_answer' | 'completed' | 'failed';
     readonly currentTurn: number;
     readonly lastAssistantMessage: string | null;
   };
@@ -84,7 +88,7 @@ export interface SubmitTriageResponse {
     readonly id: string;
     readonly type: 'triage_submission';
     readonly attributes: {
-      readonly status: string;
+      readonly status: 'pending' | 'processing' | 'awaiting_answer' | 'completed' | 'failed';
       readonly submittedAt: string;
     };
   };
@@ -99,9 +103,28 @@ export interface TriageAnswerResponse {
     readonly id: string;
     readonly type: 'triage_submission';
     readonly attributes: {
-      readonly status: string;
+      readonly status: 'pending' | 'processing' | 'awaiting_answer' | 'completed' | 'failed';
     };
   };
+}
+
+export interface TriageResultResource {
+  readonly id: string;
+  readonly type: 'triage_submission';
+  readonly attributes: {
+    readonly status: 'completed';
+    readonly isSynthetic: boolean;
+    readonly outcome: TriageOutcome;
+    readonly currentTurn: number;
+    readonly conversationHistory: readonly ConversationMessage[];
+    readonly processingDuration: number | null;
+    readonly submittedAt: string;
+    readonly processedAt: string;
+  };
+}
+
+export interface TriageSubmissionsListResponse {
+  readonly data: readonly TriageSubmissionResource[];
 }
 
 // --- Admin ---
