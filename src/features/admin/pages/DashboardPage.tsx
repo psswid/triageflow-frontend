@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { StatsGrid } from '../components/StatsGrid';
 import { SubmissionsTable } from '../components/SubmissionsTable';
+import { UsersTable } from '../components/UsersTable';
 import { useAdminSubmissions } from '../hooks/useAdminSubmissions';
 
 type Tab = 'overview' | 'submissions' | 'users';
@@ -61,9 +62,7 @@ export function DashboardPage() {
           <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
             Users
           </h2>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            User management will be available in a future update.
-          </p>
+          <UsersTable />
         </div>
       )}
     </div>

@@ -22,6 +22,10 @@ vi.mock('../../features/admin/components/SubmissionsTable', () => ({
   SubmissionsTable: () => <div data-testid="submissions-table">SubmissionsTable</div>,
 }));
 
+vi.mock('../../features/admin/components/UsersTable', () => ({
+  UsersTable: () => <div data-testid="users-table">UsersTable</div>,
+}));
+
 import { DashboardPage } from '../../features/admin/pages/DashboardPage';
 
 describe('DashboardPage', () => {
@@ -72,7 +76,7 @@ describe('DashboardPage', () => {
 
     fireEvent.click(screen.getByText('Users'));
 
-    expect(screen.getByText('User management will be available in a future update.')).toBeInTheDocument();
+    expect(screen.getByTestId('users-table')).toBeInTheDocument();
   });
 
   it('shows all three tabs', () => {
