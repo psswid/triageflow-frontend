@@ -2,6 +2,8 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { AppLayout } from './components/layout/AppLayout';
 import { ProtectedRoute } from './components/layout/ProtectedRoute';
 import { AdminRoute } from './components/layout/AdminRoute';
+import { RouteErrorFallback } from './components/shared/RouteErrorFallback';
+import { NotFoundPage } from './components/shared/NotFoundPage';
 import { TriagePage } from './features/triage/pages/TriagePage';
 import { TriageResultPage } from './features/triage/pages/TriageResultPage';
 import { MySubmissionsPage } from './features/submissions/pages/MySubmissionsPage';
@@ -10,6 +12,7 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <AppLayout />,
+    errorElement: <RouteErrorFallback />,
     children: [
       { index: true, element: <Navigate to="/triage" replace /> },
 
@@ -26,6 +29,7 @@ export const router = createBrowserRouter([
       // Protected routes (requires authentication)
       {
         element: <ProtectedRoute />,
+        errorElement: <RouteErrorFallback />,
         children: [
           { path: 'triage', element: <TriagePage /> },
           { path: 'triage/:id/result', element: <TriageResultPage /> },
@@ -36,6 +40,7 @@ export const router = createBrowserRouter([
       // Admin routes (requires admin role)
       {
         element: <AdminRoute />,
+        errorElement: <RouteErrorFallback />,
         children: [
           {
             path: 'admin',
@@ -51,6 +56,9 @@ export const router = createBrowserRouter([
           },
         ],
       },
+
+      // Catch-all 404
+      { path: '*', element: <NotFoundPage /> },
     ],
   },
 ]);

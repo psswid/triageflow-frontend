@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { apiClient } from '../../../api/client';
 import { ENDPOINTS } from '../../../api/endpoints';
-import type { TriageStatusResource } from '../../../api/types';
+import type { ApiResponse, TriageStatusResource } from '../../../api/types';
 
 type TriageStatus = TriageStatusResource['attributes']['status'];
 
@@ -27,8 +27,8 @@ export function useTriagePolling({
     queryKey: ['triage', 'status', submissionId],
     queryFn: () =>
       apiClient
-        .get<TriageStatusResource>(ENDPOINTS.TRIAGE.STATUS(submissionId!))
-        .then((r) => r.data),
+        .get<ApiResponse<TriageStatusResource>>(ENDPOINTS.TRIAGE.STATUS(submissionId!))
+        .then((r) => r.data.data),
     enabled: submissionId !== null,
     refetchInterval: (query) => {
       const status = query.state.data?.attributes.status;
