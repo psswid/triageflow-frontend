@@ -66,6 +66,10 @@ export interface TriageSubmissionResource {
     readonly processingDuration: number | null;
     readonly submittedAt: string;
     readonly processedAt: string | null;
+    /** Admin-only: email of the user who owns this submission. */
+    readonly userEmail?: string;
+    /** Admin-only: user ID. */
+    readonly userId?: string;
   };
 }
 
