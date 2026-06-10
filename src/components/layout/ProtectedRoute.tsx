@@ -1,9 +1,15 @@
 import { Navigate, Outlet } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
+import { Loader } from '../shared/Loader';
 
 export function ProtectedRoute() {
-  const token = localStorage.getItem('jwt_token');
+  const { isAuthenticated, isLoading } = useAuth();
 
-  if (!token) {
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
 

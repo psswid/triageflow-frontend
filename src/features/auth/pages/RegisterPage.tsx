@@ -12,7 +12,8 @@ export function RegisterPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState<{ readonly email?: string; readonly password?: string }>({});
+  const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const [errors, setErrors] = useState<{ readonly email?: string; readonly password?: string; readonly password_confirmation?: string }>({});
 
   const register = useMutation({
     mutationFn: (data: RegisterRequest) =>
@@ -22,17 +23,31 @@ export function RegisterPage() {
       const axiosError = error as { readonly response?: { readonly data?: { readonly errors?: readonly { readonly detail?: string }[] } } };
       const errData = axiosError.response?.data;
       if (errData?.errors) {
-        const fieldErrors: { email?: string; password?: string } = {};
+        const fieldErrors: { email?: string; password?: string; password_confirmation?: string } = {};
         for (const e of errData.errors) {
           if (e.detail?.includes('email')) fieldErrors.email = e.detail;
           if (e.detail?.includes('password')) fieldErrors.password = e.detail;
+          if (e.detail?.includes('password_confirmation')) fieldErrors.password_confirmation = e.detail;
         }
         setErrors(fieldErrors);
       }
     },
   });
 
-  const handleSubmit = (e: FormEvent) => { e.preventDefault(); register.mutate({ email, password }); };
+  const validatePasswordsMatch = (): boolean => {
+    if (password !== passwordConfirmation) {
+      setErrors((prev) => ({ ...prev, password_confirmation: 'Passwords do not match' }));
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    setErrors({});
+    if (!validatePasswordsMatch()) return;
+    register.mutate({ email, password, password_confirmation: passwordConfirmation });
+  };
 
   return (
     <div className="mx-auto max-w-md py-12">
@@ -41,6 +56,7 @@ export function RegisterPage() {
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
           <Input label="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} error={errors.email} required />
           <Input label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} error={errors.password} required minLength={8} />
+          <Input label="Confirm Password" type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} error={errors.password_confirmation} required minLength={8} />
           <Button type="submit" className="w-full" isLoading={register.isPending}>Register</Button>
         </form>
         <p className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">

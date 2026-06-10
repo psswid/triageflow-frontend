@@ -101,12 +101,12 @@ export function SubmissionsList({ submissions, isLoading, error }: SubmissionsLi
                 {new Date(submission.attributes.submittedAt).toLocaleDateString()}
               </td>
               <td className="px-4 py-3">
-                {submission.attributes.status === 'completed' ? (
+                {submission.attributes.status !== 'failed' ? (
                   <Link
                     to={`/triage/${submission.id}/result`}
                     className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium"
                   >
-                    View Result
+                    {submission.attributes.status === 'completed' ? 'View Result' : 'View Details'}
                   </Link>
                 ) : (
                   <span className="text-gray-400">—</span>

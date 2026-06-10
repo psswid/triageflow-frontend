@@ -1,5 +1,6 @@
 export const ENDPOINTS = {
   AUTH: {
+    ME: '/api/me',
     LOGIN: '/api/login',
     REGISTER: '/api/register',
   },

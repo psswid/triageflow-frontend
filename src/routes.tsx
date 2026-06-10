@@ -7,6 +7,7 @@ import { NotFoundPage } from './components/shared/NotFoundPage';
 import { TriagePage } from './features/triage/pages/TriagePage';
 import { TriageResultPage } from './features/triage/pages/TriageResultPage';
 import { MySubmissionsPage } from './features/submissions/pages/MySubmissionsPage';
+import { VerifyEmailPage } from './features/auth/pages/VerifyEmailPage';
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
       { index: true, element: <Navigate to="/triage" replace /> },
 
       // Public routes
+      {
+        path: 'verify-email',
+        element: <VerifyEmailPage />,
+      },
       {
         path: 'login',
         lazy: () => import('./features/auth/pages/LoginPage').then((m) => ({ element: <m.LoginPage /> })),

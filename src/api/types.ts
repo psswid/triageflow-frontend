@@ -23,6 +23,16 @@ export interface UserResource {
 }
 
 // --- Auth ---
+export interface MeResponse {
+  readonly data: {
+    readonly id: string;
+    readonly type: 'user';
+    readonly email: string;
+    readonly roles: readonly string[];
+    readonly createdAt: string;
+  };
+}
+
 export interface LoginRequest {
   readonly email: string;
   readonly password: string;
@@ -35,6 +45,7 @@ export interface LoginResponse {
 export interface RegisterRequest {
   readonly email: string;
   readonly password: string;
+  readonly password_confirmation: string;
 }
 
 export interface RegisterResponse {
