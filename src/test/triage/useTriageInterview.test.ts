@@ -217,26 +217,32 @@ describe('useTriageInterview', () => {
       });
 
       // Mock status polling — first returns processing, then awaiting_answer
+      // Note: responses are wrapped in { data: ... } to match axios response shape,
+      // with an inner { data: ... } for the JSON:API envelope (ApiResponse<TriageStatusResource>)
       mockGet
         .mockResolvedValueOnce({
           data: {
-            id: 'sub-1',
-            type: 'triage_submission',
-            attributes: {
-              status: 'processing',
-              currentTurn: 0,
-              lastAssistantMessage: null,
+            data: {
+              id: 'sub-1',
+              type: 'triage_submission',
+              attributes: {
+                status: 'processing',
+                currentTurn: 0,
+                lastAssistantMessage: null,
+              },
             },
           },
         })
         .mockResolvedValueOnce({
           data: {
-            id: 'sub-1',
-            type: 'triage_submission',
-            attributes: {
-              status: 'awaiting_answer',
-              currentTurn: 1,
-              lastAssistantMessage: 'Where is the pain located?',
+            data: {
+              id: 'sub-1',
+              type: 'triage_submission',
+              attributes: {
+                status: 'awaiting_answer',
+                currentTurn: 1,
+                lastAssistantMessage: 'Where is the pain located?',
+              },
             },
           },
         });
@@ -284,14 +290,17 @@ describe('useTriageInterview', () => {
       });
 
       // Mock status polling returns failed
+      // Response wrapped in { data: ... } for axios, inner { data: ... } for JSON:API envelope
       mockGet.mockResolvedValueOnce({
         data: {
-          id: 'sub-2',
-          type: 'triage_submission',
-          attributes: {
-            status: 'failed',
-            currentTurn: 0,
-            lastAssistantMessage: null,
+          data: {
+            id: 'sub-2',
+            type: 'triage_submission',
+            attributes: {
+              status: 'failed',
+              currentTurn: 0,
+              lastAssistantMessage: null,
+            },
           },
         },
       });
