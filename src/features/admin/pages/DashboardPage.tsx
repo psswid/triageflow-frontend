@@ -3,12 +3,19 @@ import { StatsGrid } from '../components/StatsGrid';
 import { SubmissionsTable } from '../components/SubmissionsTable';
 import { UsersTable } from '../components/UsersTable';
 import { useAdminSubmissions } from '../hooks/useAdminSubmissions';
+import { useGenerateSyntheticCase } from '../hooks/useGenerateSyntheticCase';
+import { Spinner } from '../../../components/ui/Spinner';
 
 type Tab = 'overview' | 'submissions' | 'users';
 
 export function DashboardPage() {
   const [activeTab, setActiveTab] = useState<Tab>('overview');
+  const [showGeneratedMessage, setShowGeneratedMessage] = useState(false);
   const submissionsQuery = useAdminSubmissions();
+  const generateMutation = useGenerateSyntheticCase(() => {
+    setShowGeneratedMessage(true);
+    setTimeout(() => setShowGeneratedMessage(false), 4000);
+  });
 
   const tabs: { key: Tab; label: string }[] = [
     { key: 'overview', label: 'Overview' },
@@ -20,7 +27,28 @@ export function DashboardPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Admin Dashboard</h1>
+        <button
+          onClick={() => generateMutation.mutate()}
+          disabled={generateMutation.isPending}
+          className="inline-flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          {generateMutation.isPending ? (
+            <>
+              <Spinner />
+              Generating...
+            </>
+          ) : (
+            'Generate Synthetic Case'
+          )}
+        </button>
       </div>
+
+      {/* Success message */}
+      {showGeneratedMessage && (
+        <div className="rounded-md bg-green-50 p-3 text-sm text-green-700 dark:bg-green-900/30 dark:text-green-400">
+          Synthetic case generation started. It will appear in the stats once processed.
+        </div>
+      )}
 
       {/* Tab Navigation */}
       <div className="border-b border-gray-200 dark:border-gray-700">
