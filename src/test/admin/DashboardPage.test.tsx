@@ -1,6 +1,20 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+function TestWrapper({ children }: { children: React.ReactNode }) {
+  const queryClient = new QueryClient({
+    defaultOptions: { queries: { retry: false } },
+  });
+  return (
+    <MemoryRouter>
+      <QueryClientProvider client={queryClient}>
+        {children}
+      </QueryClientProvider>
+    </MemoryRouter>
+  );
+}
 
 const mockUseAdminStats = vi.fn();
 const mockUseAdminSubmissions = vi.fn();
@@ -36,31 +50,19 @@ describe('DashboardPage', () => {
   });
 
   it('renders the page title', () => {
-    render(
-      <MemoryRouter>
-        <DashboardPage />
-      </MemoryRouter>,
-    );
+    render(<DashboardPage />, { wrapper: TestWrapper });
 
     expect(screen.getByText('Admin Dashboard')).toBeInTheDocument();
   });
 
   it('shows Overview tab by default', () => {
-    render(
-      <MemoryRouter>
-        <DashboardPage />
-      </MemoryRouter>,
-    );
+    render(<DashboardPage />, { wrapper: TestWrapper });
 
     expect(screen.getByTestId('stats-grid')).toBeInTheDocument();
   });
 
   it('switches to Submissions tab when clicked', () => {
-    render(
-      <MemoryRouter>
-        <DashboardPage />
-      </MemoryRouter>,
-    );
+    render(<DashboardPage />, { wrapper: TestWrapper });
 
     fireEvent.click(screen.getByText('Submissions'));
 
@@ -68,11 +70,7 @@ describe('DashboardPage', () => {
   });
 
   it('switches to Users tab when clicked', () => {
-    render(
-      <MemoryRouter>
-        <DashboardPage />
-      </MemoryRouter>,
-    );
+    render(<DashboardPage />, { wrapper: TestWrapper });
 
     fireEvent.click(screen.getByText('Users'));
 
@@ -80,11 +78,7 @@ describe('DashboardPage', () => {
   });
 
   it('shows all three tabs', () => {
-    render(
-      <MemoryRouter>
-        <DashboardPage />
-      </MemoryRouter>,
-    );
+    render(<DashboardPage />, { wrapper: TestWrapper });
 
     expect(screen.getByText('Overview')).toBeInTheDocument();
     expect(screen.getByText('Submissions')).toBeInTheDocument();
