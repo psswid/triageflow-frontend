@@ -18,5 +18,8 @@ export const ENDPOINTS = {
     USERS: '/api/admin/users',
     SYNTHETIC_GENERATE: '/api/admin/synthetic/generate',
     IMPERSONATE: (id: string) => `/api/admin/users/${id}/impersonate`,
+    FAILED_MESSAGES: '/api/admin/failed-messages',
+    FAILED_MESSAGE_RETRY: (id: number) => `/api/admin/failed-messages/${id}/retry`,
+    FAILED_MESSAGE_DELETE: (id: number) => `/api/admin/failed-messages/${id}`,
   },
 } as const;

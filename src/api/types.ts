@@ -161,3 +161,34 @@ export interface ImpersonateResponse {
     readonly impersonated: string;
   };
 }
+
+// --- Failed Messages ---
+export interface FailedMessageResource {
+  readonly id: number;
+  readonly type: 'failed_message';
+  readonly attributes: {
+    readonly messageId: number;
+    readonly type: string;
+    readonly failedAt: string;
+    readonly error: string;
+    readonly preview: string;
+  };
+}
+
+export interface FailedMessagesListResponse {
+  readonly data: readonly FailedMessageResource[];
+}
+
+export interface RetryFailedMessageResponse {
+  readonly data: {
+    readonly id: number;
+    readonly status: 'retried';
+  };
+}
+
+export interface DeleteFailedMessageResponse {
+  readonly data: {
+    readonly id: number;
+    readonly status: 'deleted';
+  };
+}
