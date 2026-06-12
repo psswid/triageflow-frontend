@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { StatsGrid } from '../components/StatsGrid';
 import { SubmissionsTable } from '../components/SubmissionsTable';
 import { UsersTable } from '../components/UsersTable';
+import { FailedMessagesTable } from '../components/FailedMessagesTable';
 import { useAdminSubmissions } from '../hooks/useAdminSubmissions';
 import { useGenerateSyntheticCase } from '../hooks/useGenerateSyntheticCase';
 import { Spinner } from '../../../components/ui/Spinner';
 
-type Tab = 'overview' | 'submissions' | 'users';
+type Tab = 'overview' | 'submissions' | 'users' | 'failed-messages';
 
 export function DashboardPage() {
   const [activeTab, setActiveTab] = useState<Tab>('overview');
@@ -21,6 +22,7 @@ export function DashboardPage() {
     { key: 'overview', label: 'Overview' },
     { key: 'submissions', label: 'Submissions' },
     { key: 'users', label: 'Users' },
+    { key: 'failed-messages', label: 'Failed Messages' },
   ];
 
   return (
@@ -91,6 +93,15 @@ export function DashboardPage() {
             Users
           </h2>
           <UsersTable />
+        </div>
+      )}
+
+      {activeTab === 'failed-messages' && (
+        <div>
+          <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+            Failed Messages
+          </h2>
+          <FailedMessagesTable />
         </div>
       )}
     </div>

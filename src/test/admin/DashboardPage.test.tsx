@@ -40,6 +40,10 @@ vi.mock('../../features/admin/components/UsersTable', () => ({
   UsersTable: () => <div data-testid="users-table">UsersTable</div>,
 }));
 
+vi.mock('../../features/admin/components/FailedMessagesTable', () => ({
+  FailedMessagesTable: () => <div data-testid="failed-messages-table">FailedMessagesTable</div>,
+}));
+
 import { DashboardPage } from '../../features/admin/pages/DashboardPage';
 
 describe('DashboardPage', () => {
@@ -77,11 +81,20 @@ describe('DashboardPage', () => {
     expect(screen.getByTestId('users-table')).toBeInTheDocument();
   });
 
-  it('shows all three tabs', () => {
+  it('shows all four tabs', () => {
     render(<DashboardPage />, { wrapper: TestWrapper });
 
     expect(screen.getByText('Overview')).toBeInTheDocument();
     expect(screen.getByText('Submissions')).toBeInTheDocument();
     expect(screen.getByText('Users')).toBeInTheDocument();
+    expect(screen.getByText('Failed Messages')).toBeInTheDocument();
+  });
+
+  it('shows Failed Messages tab when clicked', () => {
+    render(<DashboardPage />, { wrapper: TestWrapper });
+
+    fireEvent.click(screen.getByText('Failed Messages'));
+
+    expect(screen.getByTestId('failed-messages-table')).toBeInTheDocument();
   });
 });
