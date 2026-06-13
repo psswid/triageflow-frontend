@@ -23,7 +23,7 @@ export function Skeleton({ className, lines = 1, variant = 'text' }: SkeletonPro
     return (
       <div
         className={clsx(
-          'animate-pulse rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900',
+          'rounded-xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900',
           className,
         )}
         aria-hidden="true"
@@ -41,7 +41,7 @@ export function Skeleton({ className, lines = 1, variant = 'text' }: SkeletonPro
         {Array.from({ length: 4 }).map((_, i) => (
           <div
             key={i}
-            className="animate-pulse rounded-xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900"
+            className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900"
           >
             <SkeletonBlock className="mb-2 h-3 w-1/2" />
             <SkeletonBlock className="h-6 w-1/3" />
