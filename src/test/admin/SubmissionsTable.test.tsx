@@ -51,9 +51,10 @@ describe('SubmissionsTable', () => {
     expect(screen.getByTestId('submissions-loading')).toBeInTheDocument();
   });
 
-  it('shows empty state on error', () => {
+  it('shows ErrorFallback on error', () => {
     renderTable(undefined, false, new Error('fail'));
-    expect(screen.getByText('Unable to load submissions')).toBeInTheDocument();
+    expect(screen.getByRole('alert')).toBeInTheDocument();
+    expect(screen.getByText('fail')).toBeInTheDocument();
   });
 
   it('shows empty state when no submissions', () => {

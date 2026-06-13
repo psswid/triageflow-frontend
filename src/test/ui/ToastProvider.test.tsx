@@ -74,7 +74,7 @@ describe('ToastProvider', () => {
   });
 
   it('throws when useToast is used outside provider', () => {
-    const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const spy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
 
     expect(() => render(<TestConsumer />)).toThrow(/must be used within a ToastProvider/i);
 
