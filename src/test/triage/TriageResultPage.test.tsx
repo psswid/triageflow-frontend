@@ -97,12 +97,14 @@ describe('TriageResultPage', () => {
   });
 
   // --- Loading state ---
-  it('shows loading spinner while fetching the result', () => {
+  it('shows skeleton while fetching the result', () => {
     mockGet.mockReturnValue(new Promise<never>(() => undefined)); // never resolves
 
     renderTriageResultPage();
 
-    expect(screen.getByText('Loading triage result...')).toBeInTheDocument();
+    // Skeleton renders aria-hidden elements with animate-pulse
+    const skeletonEl = document.querySelector('.animate-pulse');
+    expect(skeletonEl).toBeInTheDocument();
   });
 
   // --- Success state with outcome ---
@@ -211,14 +213,15 @@ describe('TriageResultPage', () => {
   });
 
   // --- Generic error state ---
-  it('shows a generic error message for unknown errors', async () => {
+  it('shows ErrorFallback for unknown errors', async () => {
     mockGet.mockRejectedValue(new Error('Network Error'));
 
     renderTriageResultPage();
 
     await waitFor(
       () => {
-        expect(screen.getByText('Something Went Wrong')).toBeInTheDocument();
+        expect(screen.getByRole('alert')).toBeInTheDocument();
+        expect(screen.getByText('Network Error')).toBeInTheDocument();
       },
       { timeout: 3000 },
     );

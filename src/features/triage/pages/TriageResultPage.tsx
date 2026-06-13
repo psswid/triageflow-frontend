@@ -6,7 +6,8 @@ import { apiClient } from '../../../api/client';
 import { ENDPOINTS } from '../../../api/endpoints';
 import { Card } from '../../../components/ui/Card';
 import { Button } from '../../../components/ui/Button';
-import { Loader } from '../../../components/shared/Loader';
+import { Skeleton } from '../../../components/ui/Skeleton';
+import { ErrorFallback } from '../../../components/shared/ErrorFallback';
 import { ConversationBubble } from '../components/ConversationBubble';
 import { OutcomeCard } from '../components/OutcomeCard';
 
@@ -16,7 +17,7 @@ export function TriageResultPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  const { status, data, error } = useQuery<ApiResponse<TriageSubmissionResource>, AxiosError>({
+  const { status, data, error, refetch } = useQuery<ApiResponse<TriageSubmissionResource>, AxiosError>({
     queryKey: ['triage-result', id],
     queryFn: async () => {
       const response = await apiClient.get<ApiResponse<TriageSubmissionResource>>(
@@ -37,7 +38,13 @@ export function TriageResultPage() {
 
   // Loading state
   if (isLoading) {
-    return <Loader message="Loading triage result..." />;
+    return (
+      <div className="mx-auto max-w-3xl space-y-6 py-8">
+        <Skeleton variant="text" lines={1} className="h-8 w-1/3" />
+        <Skeleton variant="card" />
+        <Skeleton variant="card" />
+      </div>
+    );
   }
 
   // Error state — discriminate by HTTP status
@@ -74,15 +81,11 @@ export function TriageResultPage() {
 
     // Generic error
     return (
-      <div className="py-12 text-center">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Something Went Wrong</h1>
-        <p className="mt-2 text-gray-500 dark:text-gray-400">
-          {axiosError?.message ?? 'An unexpected error occurred while loading the result.'}
-        </p>
-        <Button className="mt-6" onClick={() => { void navigate('/triage'); }}>
-          New Triage
-        </Button>
-      </div>
+      <ErrorFallback
+        error={error as Error}
+        onRetry={() => void refetch()}
+        title="Something Went Wrong"
+      />
     );
   }
 
