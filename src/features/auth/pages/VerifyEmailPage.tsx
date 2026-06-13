@@ -9,15 +9,15 @@ type VerificationStatus = 'loading' | 'success' | 'already_verified' | 'invalid_
 export function VerifyEmailPage() {
   const [searchParams] = useSearchParams();
   const token = searchParams.get('token');
-  const [status, setStatus] = useState<VerificationStatus>('loading');
-  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState<VerificationStatus>(() =>
+    token ? 'loading' : 'error',
+  );
+  const [message, setMessage] = useState(() =>
+    token ? '' : 'Missing verification token.',
+  );
 
   useEffect(() => {
-    if (!token) {
-      setStatus('error');
-      setMessage('Missing verification token.');
-      return;
-    }
+    if (!token) return;
 
     apiClient
       .get<{ readonly message: string }>(`/api/verify-email?token=${encodeURIComponent(token)}`)

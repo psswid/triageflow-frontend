@@ -73,6 +73,7 @@ describe('ImpersonateButton', () => {
 
   it('shows loading state while mutation is pending', async () => {
     // Promise that never resolves keeps isPending = true
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     mockPost.mockReturnValue(new Promise<never>(() => {}));
 
     const { container } = renderButton();

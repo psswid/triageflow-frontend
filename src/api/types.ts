@@ -162,6 +162,16 @@ export interface ImpersonateResponse {
   };
 }
 
+export interface SyntheticCaseResource {
+  readonly id: string;
+  readonly type: 'triage_submission';
+  readonly attributes: {
+    readonly isSynthetic: boolean;
+    readonly status: string;
+    readonly submittedAt: string;
+  };
+}
+
 // --- Failed Messages ---
 export interface FailedMessageResource {
   readonly id: number;

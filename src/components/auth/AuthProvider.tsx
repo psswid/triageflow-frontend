@@ -72,29 +72,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
   });
 
   // Mount-time token validation: verify stored token with GET /api/me
+  // (Client-side expiry is already handled in the useState initializer above)
   useEffect(() => {
     const token = localStorage.getItem('jwt_token');
     if (!token) return;
-
-    // Client-side JWT expiry check: skip API call if token is already expired
-    try {
-      const payload = JSON.parse(atob(token.split('.')[1]!)) as JwtPayload;
-      if (payload.exp && typeof payload.exp === 'number' && payload.exp < Math.floor(Date.now() / 1000)) {
-        localStorage.removeItem('jwt_token');
-        sessionStorage.removeItem('jwt_original');
-        sessionStorage.removeItem('impersonated');
-        setState({ isAuthenticated: false, isAdmin: false, token: null, isLoading: false });
-        setImpersonationState({ isImpersonating: false, impersonatedEmail: null, originalToken: null });
-        return;
-      }
-    } catch {
-      localStorage.removeItem('jwt_token');
-      sessionStorage.removeItem('jwt_original');
-      sessionStorage.removeItem('impersonated');
-      setState({ isAuthenticated: false, isAdmin: false, token: null, isLoading: false });
-      setImpersonationState({ isImpersonating: false, impersonatedEmail: null, originalToken: null });
-      return;
-    }
 
     apiClient.get<MeResponse>(ENDPOINTS.AUTH.ME)
       .then(() => {

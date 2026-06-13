@@ -1,7 +1,6 @@
 import { useAdminFailedMessages, useRetryFailedMessage, useDeleteFailedMessage } from '../hooks/useAdminFailedMessages';
 import { Spinner } from '../../../components/ui/Spinner';
 import { EmptyState } from '../../../components/shared/EmptyState';
-import type { FailedMessageResource } from '../../../api/types';
 
 function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString('en-US', {

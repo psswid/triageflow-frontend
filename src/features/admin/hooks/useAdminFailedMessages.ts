@@ -28,7 +28,7 @@ export function useRetryFailedMessage(onSuccess?: () => void) {
         .post<RetryFailedMessageResponse>(ENDPOINTS.ADMIN.FAILED_MESSAGE_RETRY(id))
         .then((r) => r.data.data),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['admin', 'failed-messages'] });
+      void queryClient.invalidateQueries({ queryKey: ['admin', 'failed-messages'] });
       onSuccess?.();
     },
   });
@@ -43,7 +43,7 @@ export function useDeleteFailedMessage(onSuccess?: () => void) {
         .delete<DeleteFailedMessageResponse>(ENDPOINTS.ADMIN.FAILED_MESSAGE_DELETE(id))
         .then((r) => r.data.data),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['admin', 'failed-messages'] });
+      void queryClient.invalidateQueries({ queryKey: ['admin', 'failed-messages'] });
       onSuccess?.();
     },
   });
