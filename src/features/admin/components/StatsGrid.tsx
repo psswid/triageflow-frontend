@@ -1,7 +1,7 @@
 import { useAdminStats } from '../hooks/useAdminStats';
 import { Card } from '../../../components/ui/Card';
-import { Spinner } from '../../../components/ui/Spinner';
-import { EmptyState } from '../../../components/shared/EmptyState';
+import { Skeleton } from '../../../components/ui/Skeleton';
+import { ErrorFallback } from '../../../components/shared/ErrorFallback';
 
 function StatCard({ label, value }: { label: string; value: string | number }) {
   return (
@@ -21,18 +21,18 @@ function formatDuration(seconds: number | null): string {
 }
 
 export function StatsGrid() {
-  const { data: stats, isLoading, error } = useAdminStats();
+  const { data: stats, isLoading, error, refetch } = useAdminStats();
 
   if (isLoading) {
     return (
-      <div className="flex justify-center py-8" data-testid="stats-loading">
-        <Spinner />
+      <div data-testid="stats-loading">
+        <Skeleton variant="stats-grid" />
       </div>
     );
   }
 
   if (error || !stats) {
-    return <EmptyState title="Unable to load stats" description="Could not fetch dashboard statistics." />;
+    return <ErrorFallback error={error ?? new Error('No data returned')} onRetry={() => void refetch()} />;
   }
 
   return (

@@ -22,20 +22,22 @@ describe('StatsGrid', () => {
     expect(screen.getByTestId('stats-loading')).toBeInTheDocument();
   });
 
-  it('shows empty state on error', () => {
+  it('shows ErrorFallback on error', () => {
     mockUseAdminStats.mockReturnValue({ data: undefined, isLoading: false, error: new Error('fail') });
 
     render(<StatsGrid />);
 
-    expect(screen.getByText('Unable to load stats')).toBeInTheDocument();
+    expect(screen.getByRole('alert')).toBeInTheDocument();
+    expect(screen.getByText('fail')).toBeInTheDocument();
   });
 
-  it('shows empty state when no data', () => {
+  it('shows ErrorFallback when no data', () => {
     mockUseAdminStats.mockReturnValue({ data: undefined, isLoading: false, error: null });
 
     render(<StatsGrid />);
 
-    expect(screen.getByText('Unable to load stats')).toBeInTheDocument();
+    expect(screen.getByRole('alert')).toBeInTheDocument();
+    expect(screen.getByText('No data returned')).toBeInTheDocument();
   });
 
   it('renders stat cards with values', () => {
