@@ -42,17 +42,16 @@ describe('UsersTable', () => {
     vi.clearAllMocks();
   });
 
-  it('renders loading spinner initially', () => {
+  it('renders skeleton initially', () => {
     mockUseAdminUsers.mockReturnValue({ data: undefined, isLoading: true, error: null });
 
     renderUsersTable();
 
-    // Spinner renders an SVG; verify its parent container is rendered
-    const spinner = document.querySelector('.animate-spin');
-    expect(spinner).toBeInTheDocument();
+    const skeleton = document.querySelector('.animate-pulse');
+    expect(skeleton).toBeInTheDocument();
   });
 
-  it('renders error EmptyState when API call fails', () => {
+  it('renders ErrorFallback when API call fails', () => {
     mockUseAdminUsers.mockReturnValue({
       data: undefined,
       isLoading: false,
@@ -61,10 +60,8 @@ describe('UsersTable', () => {
 
     renderUsersTable();
 
-    expect(screen.getByText('Failed to load users')).toBeInTheDocument();
-    expect(
-      screen.getByText('Could not fetch the user list. Please try again.'),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('alert')).toBeInTheDocument();
+    expect(screen.getByText('Network error')).toBeInTheDocument();
   });
 
   it('renders user list with email, roles, and ImpersonateButton per row', () => {

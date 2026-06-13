@@ -1,6 +1,7 @@
 import { useAdminUsers } from '../hooks/useAdminUsers';
-import { Spinner } from '../../../components/ui/Spinner';
+import { Skeleton } from '../../../components/ui/Skeleton';
 import { EmptyState } from '../../../components/shared/EmptyState';
+import { ErrorFallback } from '../../../components/shared/ErrorFallback';
 import { ImpersonateButton } from './ImpersonateButton';
 import type { UserResource } from '../../../api/types';
 
@@ -26,18 +27,15 @@ export function UsersTable() {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center py-12">
-        <Spinner size="lg" />
+      <div>
+        <Skeleton variant="table-row" lines={5} />
       </div>
     );
   }
 
   if (error) {
     return (
-      <EmptyState
-        title="Failed to load users"
-        description="Could not fetch the user list. Please try again."
-      />
+      <ErrorFallback error={error} onRetry={() => {}} />
     );
   }
 
