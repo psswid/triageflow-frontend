@@ -46,16 +46,16 @@ describe('FailedMessagesTable', () => {
     vi.clearAllMocks();
   });
 
-  it('renders loading spinner initially', () => {
+  it('renders skeleton initially', () => {
     mockUseAdminFailedMessages.mockReturnValue({ data: undefined, isLoading: true, error: null });
 
     renderComponent();
 
-    const spinner = document.querySelector('.animate-spin');
-    expect(spinner).toBeInTheDocument();
+    const skeleton = document.querySelector('.animate-pulse');
+    expect(skeleton).toBeInTheDocument();
   });
 
-  it('renders error EmptyState when API call fails', () => {
+  it('renders ErrorFallback when API call fails', () => {
     mockUseAdminFailedMessages.mockReturnValue({
       data: undefined,
       isLoading: false,
@@ -64,10 +64,8 @@ describe('FailedMessagesTable', () => {
 
     renderComponent();
 
-    expect(screen.getByText('Failed to load failed messages')).toBeInTheDocument();
-    expect(
-      screen.getByText('Could not fetch the failed message list. Please try again.'),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('alert')).toBeInTheDocument();
+    expect(screen.getByText('Network error')).toBeInTheDocument();
   });
 
   it('renders empty state when no messages', () => {

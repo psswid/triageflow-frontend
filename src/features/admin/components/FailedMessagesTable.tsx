@@ -1,5 +1,6 @@
 import { useAdminFailedMessages, useRetryFailedMessage, useDeleteFailedMessage } from '../hooks/useAdminFailedMessages';
-import { Spinner } from '../../../components/ui/Spinner';
+import { Skeleton } from '../../../components/ui/Skeleton';
+import { ErrorFallback } from '../../../components/shared/ErrorFallback';
 import { EmptyState } from '../../../components/shared/EmptyState';
 import { useToast } from '../../../components/ui/ToastProvider';
 
@@ -44,18 +45,15 @@ export function FailedMessagesTable() {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center py-12">
-        <Spinner size="lg" />
+      <div>
+        <Skeleton variant="table-row" lines={3} />
       </div>
     );
   }
 
   if (error) {
     return (
-      <EmptyState
-        title="Failed to load failed messages"
-        description="Could not fetch the failed message list. Please try again."
-      />
+      <ErrorFallback error={error} onRetry={() => {}} />
     );
   }
 
