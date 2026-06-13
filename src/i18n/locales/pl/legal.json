@@ -1,0 +1,82 @@
+{
+  "privacy": {
+    "title": "Polityka Prywatności",
+    "lastUpdated": "Ostatnia aktualizacja: 13 czerwca 2026",
+    "intro": "TriageFlow jest demonstracyjnym projektem portfolio. Ta polityka prywatności wyjaśnia, jakie dane zbieramy i jak ich używamy.",
+    "dataCollected": {
+      "title": "Jakie Dane Zbieramy",
+      "items": [
+        "Adres email — używany do rejestracji konta i logowania.",
+        "Opisy objawów — tekst wprowadzany podczas wywiadów selekcji.",
+        "Wyniki selekcji — rekomendacje generowane przez AI na podstawie Twoich objawów."
+      ]
+    },
+    "dataUsage": {
+      "title": "Jak Wykorzystujemy Twoje Dane",
+      "items": [
+        "Uwierzytelnianie: Twój email identyfikuje Twoje konto.",
+        "Funkcjonalność selekcji: Twoje opisy objawów są wysyłane do modelu AI (OpenRouter) w celu generowania rekomendacji.",
+        "Żadne dane nie są sprzedawane, udostępniane stronom trzecim ani wykorzystywane do marketingu."
+      ]
+    },
+    "storage": {
+      "title": "Przechowywanie Danych",
+      "items": [
+        "Wszystkie dane są przechowywane w bazie danych PostgreSQL.",
+        "Tokeny uwierzytelniania JWT są przechowywane w localStorage przeglądarki.",
+        "Preferencje języka i motywu są przechowywane w localStorage.",
+        "Nie używamy plików cookie śledzących, analityki ani skryptów stron trzecich."
+      ]
+    },
+    "rights": {
+      "title": "Twoje Prawa",
+      "description": "Ponieważ jest to system demonstracyjny bez trwałego wdrożenia produkcyjnego, dane mogą być resetowane w dowolnym momencie. Możesz usunąć swoje konto i wszystkie powiązane dane, kontaktując się z deweloperem."
+    },
+    "contact": "Pytania dotyczące prywatności: piotr@piotrswiderski.dev"
+  },
+  "terms": {
+    "title": "Warunki Korzystania",
+    "lastUpdated": "Ostatnia aktualizacja: 13 czerwca 2026",
+    "intro": "Korzystając z TriageFlow, potwierdzasz i akceptujesz następujące warunki.",
+    "demoNature": {
+      "title": "System Demonstracyjny",
+      "description": "TriageFlow jest projektem demonstracyjnym, a nie produkcyjną usługą medyczną. Wszystkie rekomendacje selekcji są generowane przez sztuczną inteligencję wyłącznie w celach ilustracyjnych."
+    },
+    "notMedicalAdvice": {
+      "title": "Nie Porada Medyczna",
+      "description": "Rekomendacje selekcji generowane przez AI nie są prawdziwą poradą medyczną. Są to syntetyczne demonstracje tego, co pipeline selekcji AI mógłby wygenerować. Nie polegaj na nich przy podejmowaniu rzeczywistych decyzji medycznych. Jeśli masz problem medyczny, natychmiast skonsultuj się z wykwalifikowanym specjalistą."
+    },
+    "noLiability": {
+      "title": "Brak Odpowiedzialności",
+      "description": "Deweloper nie ponosi odpowiedzialności za jakiekolwiek działania podjęte na podstawie treści generowanych przez AI w tej aplikacji demo. Korzystanie odbywa się wyłącznie na własne ryzyko."
+    },
+    "dataHandling": {
+      "title": "Przetwarzanie Danych",
+      "description": "Dane przesyłane do tego demo mogą być przetwarzane przez zewnętrznych dostawców AI (OpenRouter). Żadne dane nie są sprzedawane ani wykorzystywane do celów wykraczających poza funkcjonalność demo. Szczegóły w Polityce Prywatności."
+    }
+  },
+  "cookies": {
+    "title": "Polityka Plików Cookie",
+    "lastUpdated": "Ostatnia aktualizacja: 13 czerwca 2026",
+    "intro": "TriageFlow nie używa tradycyjnych plików cookie przeglądarki. Oto co przechowujemy w Twojej przeglądarce:",
+    "localStorage": {
+      "title": "Użycie Local Storage",
+      "items": [
+        "Token uwierzytelniania JWT — wymagany do utrzymania sesji (niezbędny).",
+        "Preferencja języka — zapamiętuje wybór między angielskim a polskim (preferencja).",
+        "Preferencja motywu — zapamiętuje wybór między trybem jasnym a ciemnym (preferencja).",
+        "Potwierdzenie zgody cookie — zapamiętuje, że widziałeś powiadomienie o zgodzie."
+      ]
+    },
+    "sessionStorage": {
+      "title": "Użycie Session Storage",
+      "items": [
+        "Stan impersonacji admina — tymczasowo przechowuje oryginalny token admina podczas impersonacji użytkownika. Czyszczone po zamknięciu karty."
+      ]
+    },
+    "noTracking": {
+      "title": "Brak Śledzenia",
+      "description": "Nie używamy żadnej analityki, plików cookie śledzących, skryptów stron trzecich ani żadnej formy śledzenia zachowań użytkowników. To jest aplikacja demonstracyjna — to co widzisz, to wszystko co jest."
+    }
+  }
+}

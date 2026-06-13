@@ -1,0 +1,24 @@
+{
+  "title": "How It Works",
+  "subtitle": "A 4-step AI-powered triage pipeline, from symptom to recommendation.",
+  "steps": {
+    "step1": {
+      "title": "1. Describe Your Symptoms",
+      "description": "You start by describing what's bothering you — in your own words, just like you would to a real doctor. No forms, no checkboxes."
+    },
+    "step2": {
+      "title": "2. AI Follow-Up Questions",
+      "description": "The AI analyzes your description and asks clarifying follow-up questions, just like a triage nurse would. Up to 3 rounds of Q&A."
+    },
+    "step3": {
+      "title": "3. Triage Recommendation",
+      "description": "When the AI has enough information, it produces a recommendation: which specialist you should see, how urgent it is, and why."
+    },
+    "step4": {
+      "title": "4. Review & Next Steps",
+      "description": "You can review your full conversation history and the triage outcome. The system is transparent — you see exactly what the AI saw."
+    }
+  },
+  "cta": "Try It Yourself",
+  "disclaimer": "Remember: this is a demo. Not real medical advice. See our Terms of Service for details."
+}

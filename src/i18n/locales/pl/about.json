@@ -1,0 +1,16 @@
+{
+  "title": "O Projekcie",
+  "intro": "TriageFlow to dwutygodniowy projekt portfolio demonstrujący biegłość w full-stack development z nowoczesnymi narzędziami i integracją AI.",
+  "who": {
+    "title": "Kto To Zbudował",
+    "description": "Zbudowane przez Piotra Świderskiego — full-stack developera eksplorującego przecięcie AI, symulacji medycznych i nowoczesnej architektury webowej."
+  },
+  "why": {
+    "title": "Dlaczego TriageFlow",
+    "description": "Domena selekcji medycznej dostarcza bogatych wyzwań modelowania: maszyny stanów, asynchroniczne wiadomości, pipeline'y AI i kontrolę dostępu opartą na rolach — wszystko w kompaktowym, demonstracyjnym zakresie."
+  },
+  "disclaimer": {
+    "title": "Ważne Zastrzeżenie",
+    "description": "TriageFlow jest systemem demonstracyjnym. Nie udziela prawdziwych porad medycznych. Wszystkie rekomendacje selekcji są generowane przez AI wyłącznie w celach ilustracyjnych. Jeśli masz problem medyczny, skonsultuj się z wykwalifikowanym specjalistą."
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "title": "New Triage",
+  "subtitle": "Describe your symptoms and the AI will ask follow-up questions to determine urgency and specialist.",
+  "symptomInput": {
+    "label": "Describe your symptoms",
+    "placeholder": "e.g., I have a severe headache that started this morning...",
+    "maxLength": "Maximum 500 characters",
+    "submit": "Submit Symptoms",
+    "submitting": "Analyzing your symptoms..."
+  },
+  "answerInput": {
+    "label": "Your answer",
+    "placeholder": "Type your answer here...",
+    "maxLength": "Maximum 300 characters",
+    "submit": "Send Answer"
+  },
+  "status": {
+    "pending": "Submitting your symptoms...",
+    "processing": "AI is analyzing your symptoms...",
+    "awaitingAnswer": "The AI has a follow-up question for you.",
+    "completed": "Triage complete!",
+    "failed": "Something went wrong. Please try again."
+  },
+  "conversation": {
+    "you": "You",
+    "aiAssistant": "AI Assistant",
+    "initialDescription": "Your initial description",
+    "finalResult": "Triage result available"
+  },
+  "result": {
+    "title": "Triage Result",
+    "specialist": "Recommended Specialist",
+    "urgency": "Urgency",
+    "justification": "Justification",
+    "conversationHistory": "Conversation History",
+    "processingTime": "Processing time",
+    "seconds": "{{count}} second",
+    "seconds_plural": "{{count}} seconds",
+    "notCompleted": "Triage not yet completed",
+    "checkBack": "The AI is still analyzing your case. Check back shortly.",
+    "goToNewTriage": "Start New Triage"
+  },
+  "urgencyLabels": {
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High",
+    "emergency": "Emergency"
+  },
+  "submissions": {
+    "title": "My Submissions",
+    "empty": "You haven't submitted any triage cases yet.",
+    "startTriage": "Start Your First Triage",
+    "viewResult": "View Result",
+    "viewDetails": "View Details",
+    "table": {
+      "date": "Date",
+      "status": "Status",
+      "urgency": "Urgency",
+      "specialist": "Specialist",
+      "synthetic": "Synthetic",
+      "actions": "Actions"
+    }
+  }
+}

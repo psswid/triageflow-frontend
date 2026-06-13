@@ -1,0 +1,81 @@
+{
+  "dashboard": {
+    "title": "Admin Dashboard",
+    "tabs": {
+      "overview": "Overview",
+      "submissions": "Submissions",
+      "users": "Users",
+      "failedMessages": "Failed Messages"
+    },
+    "stats": {
+      "totalSubmissions": "Total Submissions",
+      "syntheticCases": "Synthetic Cases",
+      "userCases": "User Cases",
+      "avgProcessingTime": "Avg Processing Time",
+      "byStatus": "By Status",
+      "bySpecialist": "By Specialist",
+      "byUrgency": "By Urgency"
+    },
+    "generateSynthetic": {
+      "button": "Generate Synthetic Case",
+      "generating": "Generating...",
+      "success": "Synthetic case generated! It will appear in the submissions list shortly."
+    },
+    "submissions": {
+      "title": "All Submissions",
+      "empty": "No submissions yet.",
+      "table": {
+        "user": "User",
+        "date": "Date",
+        "status": "Status",
+        "urgency": "Urgency",
+        "specialist": "Specialist",
+        "synthetic": "Synthetic",
+        "processingTime": "Time",
+        "actions": "Actions"
+      },
+      "viewDetails": "View Details"
+    },
+    "users": {
+      "title": "Users",
+      "empty": "No users found.",
+      "table": {
+        "email": "Email",
+        "roles": "Roles",
+        "created": "Created",
+        "actions": "Actions"
+      },
+      "impersonate": "Impersonate"
+    },
+    "failedMessages": {
+      "title": "Failed Messages",
+      "empty": "No failed messages.",
+      "table": {
+        "type": "Type",
+        "error": "Error",
+        "preview": "Preview",
+        "timestamp": "Timestamp",
+        "actions": "Actions"
+      },
+      "retry": "Retry",
+      "retrying": "Retrying...",
+      "delete": "Delete"
+    },
+    "impersonation": {
+      "banner": "Viewing as {{email}}",
+      "backToAdmin": "Back to Admin"
+    }
+  },
+  "submissionDetail": {
+    "title": "Submission Detail",
+    "submissionInfo": "Submission Info",
+    "user": "User",
+    "submittedAt": "Submitted",
+    "status": "Status",
+    "processingTime": "Processing Time",
+    "synthetic": "Synthetic Case",
+    "conversation": "Conversation History",
+    "notFound": "Submission not found.",
+    "backToList": "Back to Submissions"
+  }
+}

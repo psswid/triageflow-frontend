@@ -1,0 +1,54 @@
+{
+  "appName": "TriageFlow",
+  "tagline": "Demo Preselekcji Medycznej Wspieranej przez AI",
+  "nav": {
+    "home": "Strona Główna",
+    "about": "O Projekcie",
+    "howItWorks": "Jak To Działa",
+    "login": "Zaloguj Się",
+    "register": "Zarejestruj Się",
+    "logout": "Wyloguj Się",
+    "newTriage": "Nowa Selekcja",
+    "mySubmissions": "Moje Zgłoszenia",
+    "admin": "Admin",
+    "backToAdmin": "Powrót do Admina"
+  },
+  "footer": {
+    "copyright": "© 2026 Piotr Świderski. Wszelkie prawa zastrzeżone.",
+    "builtWith": "Zbudowane z Symfony, React i AI — projekt portfolio.",
+    "privacy": "Polityka Prywatności",
+    "terms": "Warunki Korzystania",
+    "cookies": "Polityka Plików Cookie",
+    "contact": "Kontakt"
+  },
+  "languageSwitcher": {
+    "label": "Język",
+    "en": "English",
+    "pl": "Polski"
+  },
+  "darkMode": {
+    "toggle": "Przełącz tryb ciemny",
+    "light": "Tryb jasny",
+    "dark": "Tryb ciemny"
+  },
+  "cookieBanner": {
+    "message": "To demo używa przeglądarkowej pamięci lokalnej do autoryzacji i preferencji. Bez śledzenia. Bez tradycyjnych plików cookie.",
+    "accept": "OK, rozumiem"
+  },
+  "loading": "Ładowanie...",
+  "error": {
+    "title": "Coś poszło nie tak",
+    "retry": "Spróbuj Ponownie",
+    "goHome": "Strona Główna",
+    "details": "Szczegóły błędu"
+  },
+  "notFound": {
+    "title": "Strona Nie Znaleziona",
+    "message": "Strona, której szukasz, nie istnieje.",
+    "goHome": "Przejdź na Stronę Główną"
+  },
+  "empty": {
+    "title": "Jeszcze nic tu nie ma",
+    "message": "Zajrzyj później."
+  }
+}

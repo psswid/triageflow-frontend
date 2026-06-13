@@ -1,0 +1,34 @@
+{
+  "hero": {
+    "title": "Masz dość czekania na pierwszą konsultację medyczną?",
+    "subtitle": "Pozwól nam zhalucynować, kto może Ci pomóc na podstawie Twoich objawów!",
+    "disclaimer": "W przypadku prawdziwego problemu medycznego skontaktuj się z prawdziwym specjalistą. To jest system demonstracyjny.",
+    "cta": "Wypróbuj Demo",
+    "secondaryCta": "Zobacz Jak To Działa"
+  },
+  "features": {
+    "title": "Co Demonstruje Ten Projekt",
+    "aiTriage": {
+      "title": "Selekcja Wspierana przez AI",
+      "description": "Pipeline wywiadu sterowany przez LLM, który zadaje pytania uzupełniające i generuje rekomendację — specjalista, pilność, uzasadnienie."
+    },
+    "fullStack": {
+      "title": "Architektura Full-Stack",
+      "description": "Backend Symfony 7.4 z kontekstami ograniczonymi w stylu DDD, asynchroniczną kolejką wiadomości i PostgreSQL. Frontend React 19 z TypeScript i TanStack Query."
+    },
+    "synthetic": {
+      "title": "Generator Syntetycznych Przypadków",
+      "description": "Harmonogram cron generujący realistyczne opisy objawów i symulujący rozmowy pacjent-AI — system działa samodzielnie."
+    },
+    "observability": {
+      "title": "Obserwowalność i Monitoring",
+      "description": "Strukturyzowane logowanie z identyfikatorami korelacji, odzyskiwanie nieudanych wiadomości, pipeline CI z PHPStan poziom 5."
+    }
+  },
+  "techStack": {
+    "title": "Stack Technologiczny",
+    "backend": "Backend",
+    "frontend": "Frontend",
+    "infra": "Infrastruktura"
+  }
+}

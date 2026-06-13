@@ -1,0 +1,24 @@
+{
+  "title": "Jak To Działa",
+  "subtitle": "4-etapowy pipeline selekcji wspieranej przez AI, od objawu do rekomendacji.",
+  "steps": {
+    "step1": {
+      "title": "1. Opisz Swoje Objawy",
+      "description": "Zaczynasz od opisania co Ci dolega — własnymi słowami, tak jak powiedziałbyś prawdziwemu lekarzowi. Bez formularzy, bez checkboxów."
+    },
+    "step2": {
+      "title": "2. Pytania Uzupełniające AI",
+      "description": "AI analizuje Twój opis i zadaje doprecyzowujące pytania, tak jak zrobiłaby to pielęgniarka podczas selekcji. Do 3 rund pytań i odpowiedzi."
+    },
+    "step3": {
+      "title": "3. Rekomendacja Selekcji",
+      "description": "Gdy AI ma wystarczająco informacji, generuje rekomendację: do jakiego specjalisty powinieneś się udać, jak pilna jest sprawa i dlaczego."
+    },
+    "step4": {
+      "title": "4. Przegląd i Następne Kroki",
+      "description": "Możesz przejrzeć pełną historię rozmowy i wynik selekcji. System jest transparentny — widzisz dokładnie to, co widziała AI."
+    }
+  },
+  "cta": "Wypróbuj Sam",
+  "disclaimer": "Pamiętaj: to demo. Nie prawdziwa porada medyczna. Szczegóły w Warunkach Korzystania."
+}

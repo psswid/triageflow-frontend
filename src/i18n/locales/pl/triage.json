@@ -1,0 +1,65 @@
+{
+  "title": "Nowa Selekcja",
+  "subtitle": "Opisz swoje objawy, a AI zada pytania uzupełniające, aby określić pilność i specjalistę.",
+  "symptomInput": {
+    "label": "Opisz swoje objawy",
+    "placeholder": "np. Mam silny ból głowy, który zaczął się dziś rano...",
+    "maxLength": "Maksymalnie 500 znaków",
+    "submit": "Wyślij Objawy",
+    "submitting": "Analizowanie objawów..."
+  },
+  "answerInput": {
+    "label": "Twoja odpowiedź",
+    "placeholder": "Wpisz swoją odpowiedź tutaj...",
+    "maxLength": "Maksymalnie 300 znaków",
+    "submit": "Wyślij Odpowiedź"
+  },
+  "status": {
+    "pending": "Wysyłanie Twoich objawów...",
+    "processing": "AI analizuje Twoje objawy...",
+    "awaitingAnswer": "AI ma do Ciebie pytanie uzupełniające.",
+    "completed": "Selekcja zakończona!",
+    "failed": "Coś poszło nie tak. Spróbuj ponownie."
+  },
+  "conversation": {
+    "you": "Ty",
+    "aiAssistant": "Asystent AI",
+    "initialDescription": "Twój początkowy opis",
+    "finalResult": "Wynik selekcji dostępny"
+  },
+  "result": {
+    "title": "Wynik Selekcji",
+    "specialist": "Zalecany Specjalista",
+    "urgency": "Pilność",
+    "justification": "Uzasadnienie",
+    "conversationHistory": "Historia Rozmowy",
+    "processingTime": "Czas przetwarzania",
+    "seconds_one": "{{count}} sekunda",
+    "seconds_few": "{{count}} sekundy",
+    "seconds_many": "{{count}} sekund",
+    "notCompleted": "Selekcja jeszcze nie zakończona",
+    "checkBack": "AI wciąż analizuje Twoją sprawę. Zajrzyj za chwilę.",
+    "goToNewTriage": "Rozpocznij Nową Selekcję"
+  },
+  "urgencyLabels": {
+    "low": "Niski",
+    "medium": "Średni",
+    "high": "Wysoki",
+    "emergency": "Nagły"
+  },
+  "submissions": {
+    "title": "Moje Zgłoszenia",
+    "empty": "Nie masz jeszcze żadnych zgłoszeń selekcji.",
+    "startTriage": "Rozpocznij Pierwszą Selekcję",
+    "viewResult": "Zobacz Wynik",
+    "viewDetails": "Zobacz Szczegóły",
+    "table": {
+      "date": "Data",
+      "status": "Status",
+      "urgency": "Pilność",
+      "specialist": "Specjalista",
+      "synthetic": "Syntetyczne",
+      "actions": "Akcje"
+    }
+  }
+}

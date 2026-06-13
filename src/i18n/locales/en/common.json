@@ -1,0 +1,54 @@
+{
+  "appName": "TriageFlow",
+  "tagline": "AI-Powered Patient Pre-Screening Demo",
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "howItWorks": "How It Works",
+    "login": "Log In",
+    "register": "Register",
+    "logout": "Log Out",
+    "newTriage": "New Triage",
+    "mySubmissions": "My Submissions",
+    "admin": "Admin",
+    "backToAdmin": "Back to Admin"
+  },
+  "footer": {
+    "copyright": "© 2026 Piotr Świderski. All rights reserved.",
+    "builtWith": "Built with Symfony, React, and AI — a portfolio project.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Policy",
+    "contact": "Contact"
+  },
+  "languageSwitcher": {
+    "label": "Language",
+    "en": "English",
+    "pl": "Polski"
+  },
+  "darkMode": {
+    "toggle": "Toggle dark mode",
+    "light": "Light mode",
+    "dark": "Dark mode"
+  },
+  "cookieBanner": {
+    "message": "This demo uses browser storage for authentication and preferences. No tracking. No cookies (in the traditional sense).",
+    "accept": "OK, got it"
+  },
+  "loading": "Loading...",
+  "error": {
+    "title": "Something went wrong",
+    "retry": "Try Again",
+    "goHome": "Go Home",
+    "details": "Error details"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "message": "The page you're looking for doesn't exist.",
+    "goHome": "Go to Home"
+  },
+  "empty": {
+    "title": "Nothing here yet",
+    "message": "Check back later."
+  }
+}

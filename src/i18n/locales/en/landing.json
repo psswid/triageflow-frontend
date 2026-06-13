@@ -1,0 +1,34 @@
+{
+  "hero": {
+    "title": "Tired of waiting for your first-contact medical specialist?",
+    "subtitle": "Let's hallucinate who can help you based on your symptoms!",
+    "disclaimer": "In case of a real medical issue, please contact a human specialist. This is a demonstration system.",
+    "cta": "Try the Demo",
+    "secondaryCta": "See How It Works"
+  },
+  "features": {
+    "title": "What This Demo Showcases",
+    "aiTriage": {
+      "title": "AI-Powered Triage",
+      "description": "An LLM-driven interview pipeline that asks follow-up questions and produces a triage recommendation — specialist, urgency, and justification."
+    },
+    "fullStack": {
+      "title": "Full-Stack Architecture",
+      "description": "Symfony 7.4 backend with DDD-inspired bounded contexts, async message queue, and PostgreSQL. React 19 frontend with TypeScript and TanStack Query."
+    },
+    "synthetic": {
+      "title": "Synthetic Case Generator",
+      "description": "A cron-driven scheduler that generates realistic symptom descriptions and simulates patient-AI conversations — the system runs itself."
+    },
+    "observability": {
+      "title": "Observability & Monitoring",
+      "description": "Structured logging with correlation IDs, failed message recovery, CI pipeline with PHPStan level 5."
+    }
+  },
+  "techStack": {
+    "title": "Tech Stack",
+    "backend": "Backend",
+    "frontend": "Frontend",
+    "infra": "Infrastructure"
+  }
+}

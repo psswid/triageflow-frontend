@@ -1,0 +1,81 @@
+{
+  "dashboard": {
+    "title": "Panel Administratora",
+    "tabs": {
+      "overview": "Przegląd",
+      "submissions": "Zgłoszenia",
+      "users": "Użytkownicy",
+      "failedMessages": "Nieudane Wiadomości"
+    },
+    "stats": {
+      "totalSubmissions": "Wszystkie Zgłoszenia",
+      "syntheticCases": "Przypadki Syntetyczne",
+      "userCases": "Przypadki Użytkowników",
+      "avgProcessingTime": "Średni Czas Przetwarzania",
+      "byStatus": "Według Statusu",
+      "bySpecialist": "Według Specjalisty",
+      "byUrgency": "Według Pilności"
+    },
+    "generateSynthetic": {
+      "button": "Generuj Przypadek Syntetyczny",
+      "generating": "Generowanie...",
+      "success": "Przypadek syntetyczny wygenerowany! Pojawi się wkrótce na liście zgłoszeń."
+    },
+    "submissions": {
+      "title": "Wszystkie Zgłoszenia",
+      "empty": "Brak zgłoszeń.",
+      "table": {
+        "user": "Użytkownik",
+        "date": "Data",
+        "status": "Status",
+        "urgency": "Pilność",
+        "specialist": "Specjalista",
+        "synthetic": "Syntetyczne",
+        "processingTime": "Czas",
+        "actions": "Akcje"
+      },
+      "viewDetails": "Zobacz Szczegóły"
+    },
+    "users": {
+      "title": "Użytkownicy",
+      "empty": "Nie znaleziono użytkowników.",
+      "table": {
+        "email": "Email",
+        "roles": "Roles",
+        "created": "Utworzono",
+        "actions": "Akcje"
+      },
+      "impersonate": "Impersonuj"
+    },
+    "failedMessages": {
+      "title": "Nieudane Wiadomości",
+      "empty": "Brak nieudanych wiadomości.",
+      "table": {
+        "type": "Typ",
+        "error": "Błąd",
+        "preview": "Podgląd",
+        "timestamp": "Czas",
+        "actions": "Akcje"
+      },
+      "retry": "Ponów",
+      "retrying": "Ponawianie...",
+      "delete": "Usuń"
+    },
+    "impersonation": {
+      "banner": "Przeglądasz jako {{email}}",
+      "backToAdmin": "Powrót do Admina"
+    }
+  },
+  "submissionDetail": {
+    "title": "Szczegóły Zgłoszenia",
+    "submissionInfo": "Informacje o Zgłoszeniu",
+    "user": "Użytkownik",
+    "submittedAt": "Zgłoszono",
+    "status": "Status",
+    "processingTime": "Czas Przetwarzania",
+    "synthetic": "Przypadek Syntetyczny",
+    "conversation": "Historia Rozmowy",
+    "notFound": "Nie znaleziono zgłoszenia.",
+    "backToList": "Powrót do Listy"
+  }
+}
