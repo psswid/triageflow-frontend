@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Spinner } from '../../../components/ui/Spinner';
+import { Skeleton } from '../../../components/ui/Skeleton';
 import { Badge } from '../../../components/ui/Badge';
+import { ErrorFallback } from '../../../components/shared/ErrorFallback';
 import { EmptyState } from '../../../components/shared/EmptyState';
 import type { TriageSubmissionResource } from '../../../api/types';
 
@@ -28,18 +29,15 @@ const URGENCY_BADGE: Record<string, 'low' | 'medium' | 'high' | 'emergency'> = {
 export function SubmissionsList({ submissions, isLoading, error }: SubmissionsListProps) {
   if (isLoading) {
     return (
-      <div className="flex justify-center py-8" data-testid="submissions-loading">
-        <Spinner />
+      <div data-testid="submissions-loading">
+        <Skeleton variant="table-row" lines={3} />
       </div>
     );
   }
 
   if (error) {
     return (
-      <EmptyState
-        title="Unable to load submissions"
-        description="Could not fetch your submissions. Please try again later."
-      />
+      <ErrorFallback error={error} onRetry={() => {}} />
     );
   }
 
