@@ -6,17 +6,22 @@ import { FailedMessagesTable } from '../components/FailedMessagesTable';
 import { useAdminSubmissions } from '../hooks/useAdminSubmissions';
 import { useGenerateSyntheticCase } from '../hooks/useGenerateSyntheticCase';
 import { Spinner } from '../../../components/ui/Spinner';
+import { useToast } from '../../../components/ui/ToastProvider';
 
 type Tab = 'overview' | 'submissions' | 'users' | 'failed-messages';
 
 export function DashboardPage() {
   const [activeTab, setActiveTab] = useState<Tab>('overview');
   const [showGeneratedMessage, setShowGeneratedMessage] = useState(false);
+  const { toast } = useToast();
   const submissionsQuery = useAdminSubmissions();
-  const generateMutation = useGenerateSyntheticCase(() => {
-    setShowGeneratedMessage(true);
-    setTimeout(() => setShowGeneratedMessage(false), 4000);
-  });
+  const generateMutation = useGenerateSyntheticCase(
+    () => {
+      setShowGeneratedMessage(true);
+      setTimeout(() => setShowGeneratedMessage(false), 4000);
+    },
+    (err) => toast.error(`Failed to generate synthetic case: ${err.message}`),
+  );
 
   const tabs: { key: Tab; label: string }[] = [
     { key: 'overview', label: 'Overview' },

@@ -3,7 +3,7 @@ import { apiClient } from '../../../api/client';
 import { ENDPOINTS } from '../../../api/endpoints';
 import type { ApiResponse, SyntheticCaseResource } from '../../../api/types';
 
-export function useGenerateSyntheticCase(onSuccess?: () => void) {
+export function useGenerateSyntheticCase(onSuccess?: () => void, onError?: (error: Error) => void) {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -15,6 +15,9 @@ export function useGenerateSyntheticCase(onSuccess?: () => void) {
       void queryClient.invalidateQueries({ queryKey: ['admin', 'stats'] });
       void queryClient.invalidateQueries({ queryKey: ['admin', 'submissions'] });
       onSuccess?.();
+    },
+    onError: (err: Error) => {
+      onError?.(err);
     },
   });
 }

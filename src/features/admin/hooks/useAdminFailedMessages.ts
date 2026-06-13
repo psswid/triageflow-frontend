@@ -19,7 +19,7 @@ export function useAdminFailedMessages() {
   });
 }
 
-export function useRetryFailedMessage(onSuccess?: () => void) {
+export function useRetryFailedMessage(onSuccess?: () => void, onError?: (error: Error) => void) {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -31,10 +31,13 @@ export function useRetryFailedMessage(onSuccess?: () => void) {
       void queryClient.invalidateQueries({ queryKey: ['admin', 'failed-messages'] });
       onSuccess?.();
     },
+    onError: (err: Error) => {
+      onError?.(err);
+    },
   });
 }
 
-export function useDeleteFailedMessage(onSuccess?: () => void) {
+export function useDeleteFailedMessage(onSuccess?: () => void, onError?: (error: Error) => void) {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -45,6 +48,9 @@ export function useDeleteFailedMessage(onSuccess?: () => void) {
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['admin', 'failed-messages'] });
       onSuccess?.();
+    },
+    onError: (err: Error) => {
+      onError?.(err);
     },
   });
 }

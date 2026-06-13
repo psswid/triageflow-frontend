@@ -12,7 +12,16 @@ vi.mock('../../features/admin/hooks/useAdminFailedMessages', () => ({
   useDeleteFailedMessage: () => mockDeleteMutation,
 }));
 
+import { ToastProvider } from '../../components/ui/ToastProvider';
 import { FailedMessagesTable } from '../../features/admin/components/FailedMessagesTable';
+
+function renderComponent(): void {
+  render(
+    <ToastProvider>
+      <FailedMessagesTable />
+    </ToastProvider>,
+  );
+}
 
 function createMessage(overrides: Partial<FailedMessageResource> = {}): FailedMessageResource {
   return {
@@ -30,9 +39,7 @@ function createMessage(overrides: Partial<FailedMessageResource> = {}): FailedMe
   };
 }
 
-function renderComponent(): void {
-  render(<FailedMessagesTable />);
-}
+
 
 describe('FailedMessagesTable', () => {
   beforeEach(() => {

@@ -1,6 +1,7 @@
 import { useAdminFailedMessages, useRetryFailedMessage, useDeleteFailedMessage } from '../hooks/useAdminFailedMessages';
 import { Spinner } from '../../../components/ui/Spinner';
 import { EmptyState } from '../../../components/shared/EmptyState';
+import { useToast } from '../../../components/ui/ToastProvider';
 
 function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString('en-US', {
@@ -18,10 +19,18 @@ function messageTypeLabel(type: string): string {
 }
 
 export function FailedMessagesTable() {
+  const { toast } = useToast();
   const { data: messages, isLoading, error } = useAdminFailedMessages();
 
-  const retryMutation = useRetryFailedMessage();
-  const deleteMutation = useDeleteFailedMessage();
+  const retryMutation = useRetryFailedMessage(
+    undefined,
+    (err) => toast.error(`Failed to retry message: ${err.message}`),
+  );
+
+  const deleteMutation = useDeleteFailedMessage(
+    undefined,
+    (err) => toast.error(`Failed to delete message: ${err.message}`),
+  );
 
   const handleRetry = (id: number) => {
     retryMutation.mutate(id);
