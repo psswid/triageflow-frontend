@@ -99,18 +99,18 @@ describe('SubmissionDetailPage', () => {
   });
 
   // --- Loading state ---
-  it('renders loading spinner while fetching', () => {
+  it('renders skeleton placeholders while fetching', () => {
     mockGet.mockReturnValue(new Promise<never>(() => undefined)); // never resolves
 
     const { container } = renderSubmissionDetailPage();
 
-    // Spinner renders an SVG with animate-spin class
-    const spinner = container.querySelector('.animate-spin');
-    expect(spinner).toBeInTheDocument();
+    // Skeleton uses animate-pulse class
+    const skeleton = container.querySelector('.animate-pulse');
+    expect(skeleton).toBeInTheDocument();
   });
 
   // --- 404 error state ---
-  it('renders error EmptyState when submission not found (404)', async () => {
+  it('renders ErrorFallback when submission not found (404)', async () => {
     mockGet.mockRejectedValue({
       response: { status: 404 },
     });
@@ -118,23 +118,25 @@ describe('SubmissionDetailPage', () => {
     renderSubmissionDetailPage();
 
     await waitFor(() => {
-      expect(screen.getByText('Submission not found')).toBeInTheDocument();
+      expect(screen.getByRole('alert')).toBeInTheDocument();
     });
 
-    expect(
-      screen.getByText('The requested submission could not be loaded.'),
-    ).toBeInTheDocument();
+    expect(screen.getByText('Submission not found')).toBeInTheDocument();
+    expect(screen.getByText('Retry')).toBeInTheDocument();
   });
 
   // --- Generic error state ---
-  it('renders error EmptyState when API call fails', async () => {
+  it('renders ErrorFallback when API call fails', async () => {
     mockGet.mockRejectedValue(new Error('Network Error'));
 
     renderSubmissionDetailPage();
 
     await waitFor(() => {
-      expect(screen.getByText('Submission not found')).toBeInTheDocument();
+      expect(screen.getByRole('alert')).toBeInTheDocument();
     });
+
+    expect(screen.getByText('Submission not found')).toBeInTheDocument();
+    expect(screen.getByText('Retry')).toBeInTheDocument();
   });
 
   // --- Success state with outcome and conversation ---

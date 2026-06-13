@@ -2,8 +2,8 @@ import { useParams, Link } from 'react-router-dom';
 import { useAdminSubmission } from '../hooks/useAdminSubmission';
 import { Card } from '../../../components/ui/Card';
 import { Badge } from '../../../components/ui/Badge';
-import { Spinner } from '../../../components/ui/Spinner';
-import { EmptyState } from '../../../components/shared/EmptyState';
+import { Skeleton } from '../../../components/ui/Skeleton';
+import { ErrorFallback } from '../../../components/shared/ErrorFallback';
 import type { ConversationMessage } from '../../../api/types';
 
 const STATUS_BADGE: Record<string, 'pending' | 'processing' | 'completed' | 'failed'> = {
@@ -53,30 +53,35 @@ function ConversationBubble({ message }: { message: ConversationMessage }) {
 
 export function SubmissionDetailPage() {
   const { id } = useParams<{ id: string }>();
-  const { data: submission, isLoading, error } = useAdminSubmission(id);
+  const { data: submission, isLoading, error, refetch } = useAdminSubmission(id);
 
   if (isLoading) {
     return (
-      <div className="flex justify-center py-12">
-        <Spinner />
+      <div className="space-y-6">
+        <Skeleton variant="text" lines={1} className="h-8 w-1/4" />
+        <Skeleton variant="card" />
+        <Skeleton variant="card" />
       </div>
     );
   }
 
   if (error || !submission) {
     return (
-      <EmptyState
-        title="Submission not found"
-        description="The requested submission could not be loaded."
-        action={
+      <div className="space-y-4">
+        <ErrorFallback
+          error={error ?? new Error('Submission not found')}
+          onRetry={() => void refetch()}
+          title="Submission not found"
+        />
+        <div className="text-center">
           <Link
             to="/admin"
             className="text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400"
           >
             ← Back to Dashboard
           </Link>
-        }
-      />
+        </div>
+      </div>
     );
   }
 
