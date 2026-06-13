@@ -7,6 +7,7 @@ import { useAdminSubmissions } from '../hooks/useAdminSubmissions';
 import { useGenerateSyntheticCase } from '../hooks/useGenerateSyntheticCase';
 import { Spinner } from '../../../components/ui/Spinner';
 import { useToast } from '../../../components/ui/ToastProvider';
+import { ErrorFallback } from '../../../components/shared/ErrorFallback';
 
 type Tab = 'overview' | 'submissions' | 'users' | 'failed-messages';
 
@@ -84,11 +85,19 @@ export function DashboardPage() {
           <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
             All Submissions
           </h2>
-          <SubmissionsTable
-            submissions={submissionsQuery.data}
-            isLoading={submissionsQuery.isLoading}
-            error={submissionsQuery.error}
-          />
+          {submissionsQuery.isError ? (
+            <ErrorFallback
+              error={submissionsQuery.error}
+              onRetry={() => void submissionsQuery.refetch()}
+              title="Failed to load submissions"
+            />
+          ) : (
+            <SubmissionsTable
+              submissions={submissionsQuery.data}
+              isLoading={submissionsQuery.isLoading}
+              error={submissionsQuery.error}
+            />
+          )}
         </div>
       )}
 
