@@ -3,7 +3,7 @@ import { Button } from '../ui/Button';
 
 interface ErrorFallbackProps {
   readonly error: Error;
-  readonly onRetry: () => void;
+  readonly onRetry?: () => void;
   readonly title?: string;
 }
 
@@ -50,9 +50,11 @@ export function ErrorFallback({ error, onRetry, title }: ErrorFallbackProps) {
         </pre>
       )}
 
-      <div className="mt-6 flex items-center gap-3">
-        <Button onClick={onRetry}>Retry</Button>
-      </div>
+      {onRetry && (
+        <div className="mt-6 flex items-center gap-3">
+          <Button onClick={onRetry}>Retry</Button>
+        </div>
+      )}
     </div>
   );
 }

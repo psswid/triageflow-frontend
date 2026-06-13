@@ -36,7 +36,7 @@ export function SubmissionsTable({ submissions, isLoading, error }: SubmissionsT
   }
 
   if (error) {
-    return <ErrorFallback error={error} onRetry={() => undefined} />;
+    return <ErrorFallback error={error} />;
   }
 
   if (!submissions || submissions.length === 0) {

@@ -41,4 +41,12 @@ describe('ErrorFallback', () => {
     fireEvent.click(toggle);
     expect(screen.getByText('TypeError: cannot read')).toBeInTheDocument();
   });
+
+  it('does not render retry button when onRetry is not provided', () => {
+    render(<ErrorFallback error={new Error('fail')} />);
+
+    expect(screen.queryByRole('button', { name: /retry/i })).not.toBeInTheDocument();
+    expect(screen.getByRole('alert')).toBeInTheDocument();
+    expect(screen.getByText('fail')).toBeInTheDocument();
+  });
 });

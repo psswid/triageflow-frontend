@@ -53,7 +53,7 @@ export function FailedMessagesTable() {
 
   if (error) {
     return (
-      <ErrorFallback error={error} onRetry={() => undefined} />
+      <ErrorFallback error={error} />
     );
   }
 

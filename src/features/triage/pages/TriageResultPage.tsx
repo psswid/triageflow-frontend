@@ -81,11 +81,18 @@ export function TriageResultPage() {
 
     // Generic error
     return (
-      <ErrorFallback
-        error={error as Error}
-        onRetry={() => void refetch()}
-        title="Something Went Wrong"
-      />
+      <div className="space-y-4">
+        <ErrorFallback
+          error={error as Error}
+          onRetry={() => void refetch()}
+          title="Something Went Wrong"
+        />
+        <div className="text-center">
+          <Button onClick={() => { void navigate('/triage'); }}>
+            New Triage
+          </Button>
+        </div>
+      </div>
     );
   }
 

@@ -35,7 +35,7 @@ export function UsersTable() {
 
   if (error) {
     return (
-      <ErrorFallback error={error} onRetry={() => undefined} />
+      <ErrorFallback error={error} />
     );
   }
 

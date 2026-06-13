@@ -37,7 +37,7 @@ export function SubmissionsList({ submissions, isLoading, error }: SubmissionsLi
 
   if (error) {
     return (
-      <ErrorFallback error={error} onRetry={() => undefined} />
+      <ErrorFallback error={error} />
     );
   }
 
