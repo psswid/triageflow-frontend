@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { StatsGrid } from '../components/StatsGrid';
 import { SubmissionsTable } from '../components/SubmissionsTable';
 import { UsersTable } from '../components/UsersTable';
@@ -12,6 +13,7 @@ import { ErrorFallback } from '../../../components/shared/ErrorFallback';
 type Tab = 'overview' | 'submissions' | 'users' | 'failed-messages';
 
 export function DashboardPage() {
+  const { t } = useTranslation('admin');
   const [activeTab, setActiveTab] = useState<Tab>('overview');
   const [showGeneratedMessage, setShowGeneratedMessage] = useState(false);
   const { toast } = useToast();
@@ -25,16 +27,16 @@ export function DashboardPage() {
   );
 
   const tabs: { key: Tab; label: string }[] = [
-    { key: 'overview', label: 'Overview' },
-    { key: 'submissions', label: 'Submissions' },
-    { key: 'users', label: 'Users' },
-    { key: 'failed-messages', label: 'Failed Messages' },
+    { key: 'overview', label: t('dashboard.tabs.overview') },
+    { key: 'submissions', label: t('dashboard.tabs.submissions') },
+    { key: 'users', label: t('dashboard.tabs.users') },
+    { key: 'failed-messages', label: t('dashboard.tabs.failedMessages') },
   ];
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Admin Dashboard</h1>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{t('dashboard.title')}</h1>
         <button
           onClick={() => generateMutation.mutate()}
           disabled={generateMutation.isPending}
@@ -43,10 +45,10 @@ export function DashboardPage() {
           {generateMutation.isPending ? (
             <>
               <Spinner />
-              Generating...
+              {t('dashboard.generateSynthetic.generating')}
             </>
           ) : (
-            'Generate Synthetic Case'
+            t('dashboard.generateSynthetic.button')
           )}
         </button>
       </div>
@@ -54,7 +56,7 @@ export function DashboardPage() {
       {/* Success message */}
       {showGeneratedMessage && (
         <div className="rounded-md bg-green-50 p-3 text-sm text-green-700 dark:bg-green-900/30 dark:text-green-400">
-          Synthetic case generation started. It will appear in the stats once processed.
+          {t('dashboard.generateSynthetic.success')}
         </div>
       )}
 
@@ -83,13 +85,13 @@ export function DashboardPage() {
       {activeTab === 'submissions' && (
         <div>
           <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
-            All Submissions
+            {t('dashboard.submissions.title')}
           </h2>
           {submissionsQuery.isError ? (
             <ErrorFallback
               error={submissionsQuery.error}
               onRetry={() => void submissionsQuery.refetch()}
-              title="Failed to load submissions"
+              title={t('dashboard.submissions.empty')}
             />
           ) : (
             <SubmissionsTable
@@ -104,7 +106,7 @@ export function DashboardPage() {
       {activeTab === 'users' && (
         <div>
           <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
-            Users
+            {t('dashboard.users.title')}
           </h2>
           <UsersTable />
         </div>
@@ -113,7 +115,7 @@ export function DashboardPage() {
       {activeTab === 'failed-messages' && (
         <div>
           <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
-            Failed Messages
+            {t('dashboard.failedMessages.title')}
           </h2>
           <FailedMessagesTable />
         </div>

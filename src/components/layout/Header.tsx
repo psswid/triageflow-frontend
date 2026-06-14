@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Button } from '../ui/Button';
 
 interface HeaderProps {
@@ -8,38 +9,40 @@ interface HeaderProps {
 }
 
 export function Header({ isAuthenticated, isAdmin, onLogout }: HeaderProps) {
+  const { t } = useTranslation('common');
+
   return (
     <header className="border-b border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link to="/" className="text-xl font-bold text-blue-600 dark:text-blue-400">
-          TriageFlow
+          {t('appName')}
         </Link>
 
         <nav className="flex items-center gap-4">
           {isAuthenticated ? (
             <>
               <Link to="/triage" className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">
-                New Triage
+                {t('nav.newTriage')}
               </Link>
               <Link to="/submissions" className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">
-                My Submissions
+                {t('nav.mySubmissions')}
               </Link>
               {isAdmin && (
                 <Link to="/admin" className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">
-                  Admin
+                  {t('nav.admin')}
                 </Link>
               )}
               <Button variant="secondary" size="sm" onClick={onLogout}>
-                Logout
+                {t('nav.logout')}
               </Button>
             </>
           ) : (
             <>
               <Link to="/login">
-                <Button variant="secondary" size="sm">Login</Button>
+                <Button variant="secondary" size="sm">{t('nav.login')}</Button>
               </Link>
               <Link to="/register">
-                <Button size="sm">Register</Button>
+                <Button size="sm">{t('nav.register')}</Button>
               </Link>
             </>
           )}

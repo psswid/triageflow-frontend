@@ -2,81 +2,90 @@
   "privacy": {
     "title": "Polityka Prywatności",
     "lastUpdated": "Ostatnia aktualizacja: 13 czerwca 2026",
-    "intro": "TriageFlow jest demonstracyjnym projektem portfolio. Ta polityka prywatności wyjaśnia, jakie dane zbieramy i jak ich używamy.",
-    "dataCollected": {
-      "title": "Jakie Dane Zbieramy",
-      "items": [
-        "Adres email — używany do rejestracji konta i logowania.",
-        "Opisy objawów — tekst wprowadzany podczas wywiadów selekcji.",
-        "Wyniki selekcji — rekomendacje generowane przez AI na podstawie Twoich objawów."
-      ]
-    },
-    "dataUsage": {
-      "title": "Jak Wykorzystujemy Twoje Dane",
-      "items": [
-        "Uwierzytelnianie: Twój email identyfikuje Twoje konto.",
-        "Funkcjonalność selekcji: Twoje opisy objawów są wysyłane do modelu AI (OpenRouter) w celu generowania rekomendacji.",
-        "Żadne dane nie są sprzedawane, udostępniane stronom trzecim ani wykorzystywane do marketingu."
-      ]
-    },
-    "storage": {
-      "title": "Przechowywanie Danych",
-      "items": [
-        "Wszystkie dane są przechowywane w bazie danych PostgreSQL.",
-        "Tokeny uwierzytelniania JWT są przechowywane w localStorage przeglądarki.",
-        "Preferencje języka i motywu są przechowywane w localStorage.",
-        "Nie używamy plików cookie śledzących, analityki ani skryptów stron trzecich."
-      ]
-    },
-    "rights": {
-      "title": "Twoje Prawa",
-      "description": "Ponieważ jest to system demonstracyjny bez trwałego wdrożenia produkcyjnego, dane mogą być resetowane w dowolnym momencie. Możesz usunąć swoje konto i wszystkie powiązane dane, kontaktując się z deweloperem."
+    "sections": {
+      "intro": {
+        "title": "Wprowadzenie",
+        "content": "TriageFlow jest demonstracyjnym projektem portfolio. Ta polityka prywatności wyjaśnia, jakie dane zbieramy i jak ich używamy."
+      },
+      "data": {
+        "title": "Jakie Dane Zbieramy",
+        "content": "Zbieramy trzy rodzaje danych: (1) Adres email — używany do rejestracji konta i logowania. (2) Opisy objawów — tekst wprowadzany podczas wywiadów selekcji. (3) Wyniki selekcji — rekomendacje generowane przez AI na podstawie Twoich objawów."
+      },
+      "openrouter": {
+        "title": "Przetwarzanie AI (OpenRouter)",
+        "content": "Twoje opisy objawów są wysyłane do modelu AI przez OpenRouter w celu generowania rekomendacji selekcji. Żadne dane nie są sprzedawane, udostępniane stronom trzecim ani wykorzystywane do marketingu. Dostawca AI przetwarza Twój tekst objawów wyłącznie w celu wygenerowania wyniku selekcji."
+      },
+      "email": {
+        "title": "Wykorzystanie Adresu Email",
+        "content": "Twój adres email jest używany wyłącznie do uwierzytelniania — identyfikuje Twoje konto i umożliwia logowanie. Nie wysyłamy emaili marketingowych, newsletterów ani niechcianych wiadomości. Twój email nigdy nie jest udostępniany stronom trzecim."
+      },
+      "retention": {
+        "title": "Przechowywanie Danych",
+        "content": "Wszystkie dane są przechowywane w bazie danych PostgreSQL. Tokeny uwierzytelniania JWT są przechowywane w localStorage przeglądarki. Preferencje języka i motywu są również przechowywane w localStorage. Nie używamy plików cookie śledzących, analityki ani skryptów stron trzecich. Ponieważ jest to system demonstracyjny, dane mogą być resetowane w dowolnym momencie."
+      },
+      "rights": {
+        "title": "Twoje Prawa",
+        "content": "Ponieważ jest to system demonstracyjny bez trwałego wdrożenia produkcyjnego, dane mogą być resetowane w dowolnym momencie. Możesz usunąć swoje konto i wszystkie powiązane dane, kontaktując się z deweloperem. Masz prawo do dostępu, poprawiania lub żądania usunięcia swoich danych osobowych."
+      }
     },
     "contact": "Pytania dotyczące prywatności: piotr@piotrswiderski.dev"
   },
   "terms": {
     "title": "Warunki Korzystania",
     "lastUpdated": "Ostatnia aktualizacja: 13 czerwca 2026",
-    "intro": "Korzystając z TriageFlow, potwierdzasz i akceptujesz następujące warunki.",
-    "demoNature": {
-      "title": "System Demonstracyjny",
-      "description": "TriageFlow jest projektem demonstracyjnym, a nie produkcyjną usługą medyczną. Wszystkie rekomendacje selekcji są generowane przez sztuczną inteligencję wyłącznie w celach ilustracyjnych."
+    "sections": {
+      "intro": {
+        "title": "Wprowadzenie",
+        "content": "Korzystając z TriageFlow, potwierdzasz i akceptujesz następujące warunki. TriageFlow jest demonstracyjnym projektem portfolio, a niniejsze warunki określają zakres dozwolonego użytkowania."
+      },
+      "demo": {
+        "title": "System Demonstracyjny",
+        "content": "TriageFlow jest projektem demonstracyjnym, a nie produkcyjną usługą medyczną. Wszystkie rekomendacje selekcji są generowane przez sztuczną inteligencję wyłącznie w celach ilustracyjnych. System został zaprojektowany, aby zaprezentować biegłość w programowaniu full-stack, a nie świadczyć rzeczywiste usługi medyczne."
+      },
+      "noMedical": {
+        "title": "Nie Porada Medyczna",
+        "content": "Rekomendacje selekcji generowane przez AI nie są prawdziwą poradą medyczną. Są to syntetyczne demonstracje tego, co pipeline selekcji AI mógłby wygenerować. Nie polegaj na nich przy podejmowaniu rzeczywistych decyzji medycznych. Jeśli masz problem medyczny, natychmiast skonsultuj się z wykwalifikowanym specjalistą."
+      },
+      "noLiability": {
+        "title": "Brak Odpowiedzialności",
+        "content": "Deweloper nie ponosi odpowiedzialności za jakiekolwiek działania podjęte na podstawie treści generowanych przez AI w tej aplikacji demo. Korzystanie odbywa się wyłącznie na własne ryzyko. Deweloper nie udziela żadnych gwarancji dotyczących dokładności, kompletności ani przydatności wyników selekcji do jakiegokolwiek celu."
+      },
+      "data": {
+        "title": "Przetwarzanie Danych",
+        "content": "Dane przesyłane do tego demo mogą być przetwarzane przez zewnętrznych dostawców AI (OpenRouter). Żadne dane nie są sprzedawane ani wykorzystywane do celów wykraczających poza funkcjonalność demo. Wszystkie dane są przechowywane w bezpiecznej bazie danych PostgreSQL. Szczegóły w Polityce Prywatności."
+      },
+      "changes": {
+        "title": "Zmiany w Warunkach",
+        "content": "Zastrzegamy sobie prawo do modyfikacji niniejszych warunków w dowolnym momencie. Zmiany będą publikowane na tej stronie z zaktualizowaną datą. Dalsze korzystanie z serwisu po wprowadzeniu zmian oznacza akceptację zmienionych warunków. Zachęcamy do okresowego przeglądania tej strony."
+      }
     },
-    "notMedicalAdvice": {
-      "title": "Nie Porada Medyczna",
-      "description": "Rekomendacje selekcji generowane przez AI nie są prawdziwą poradą medyczną. Są to syntetyczne demonstracje tego, co pipeline selekcji AI mógłby wygenerować. Nie polegaj na nich przy podejmowaniu rzeczywistych decyzji medycznych. Jeśli masz problem medyczny, natychmiast skonsultuj się z wykwalifikowanym specjalistą."
-    },
-    "noLiability": {
-      "title": "Brak Odpowiedzialności",
-      "description": "Deweloper nie ponosi odpowiedzialności za jakiekolwiek działania podjęte na podstawie treści generowanych przez AI w tej aplikacji demo. Korzystanie odbywa się wyłącznie na własne ryzyko."
-    },
-    "dataHandling": {
-      "title": "Przetwarzanie Danych",
-      "description": "Dane przesyłane do tego demo mogą być przetwarzane przez zewnętrznych dostawców AI (OpenRouter). Żadne dane nie są sprzedawane ani wykorzystywane do celów wykraczających poza funkcjonalność demo. Szczegóły w Polityce Prywatności."
-    }
+    "contact": "Pytania dotyczące warunków: piotr@piotrswiderski.dev"
   },
   "cookies": {
     "title": "Polityka Plików Cookie",
     "lastUpdated": "Ostatnia aktualizacja: 13 czerwca 2026",
-    "intro": "TriageFlow nie używa tradycyjnych plików cookie przeglądarki. Oto co przechowujemy w Twojej przeglądarce:",
-    "localStorage": {
-      "title": "Użycie Local Storage",
-      "items": [
-        "Token uwierzytelniania JWT — wymagany do utrzymania sesji (niezbędny).",
-        "Preferencja języka — zapamiętuje wybór między angielskim a polskim (preferencja).",
-        "Preferencja motywu — zapamiętuje wybór między trybem jasnym a ciemnym (preferencja).",
-        "Potwierdzenie zgody cookie — zapamiętuje, że widziałeś powiadomienie o zgodzie."
-      ]
+    "sections": {
+      "localStorage": {
+        "title": "Użycie Local Storage",
+        "content": "TriageFlow używa localStorage przeglądarki do przechowywania: (1) Tokena uwierzytelniania JWT — wymagany do utrzymania sesji (niezbędny). (2) Preferencji języka — zapamiętuje wybór między angielskim a polskim (preferencja). (3) Preferencji motywu — zapamiętuje wybór między trybem jasnym a ciemnym (preferencja). (4) Potwierdzenia zgody cookie — zapamiętuje, że widziałeś powiadomienie o zgodzie."
+      },
+      "sessionStorage": {
+        "title": "Użycie Session Storage",
+        "content": "Stan impersonacji admina jest tymczasowo przechowywany w sessionStorage — przechowuje oryginalny token admina podczas impersonacji użytkownika. Te dane są automatycznie czyszczone po zamknięciu karty przeglądarki. Żadne inne klucze sessionStorage nie są używane."
+      },
+      "noTracking": {
+        "title": "Brak Śledzenia",
+        "content": "Nie używamy żadnej analityki, plików cookie śledzących, skryptów stron trzecich ani żadnej formy śledzenia zachowań użytkowników. To jest aplikacja demonstracyjna — to co widzisz, to wszystko co jest. Nie ma ukrytych trackerów, fingerprintingu ani zbierania danych wykraczającego poza to, co niezbędne do działania aplikacji."
+      },
+      "thirdParty": {
+        "title": "Usługi Stron Trzecich",
+        "content": "Jedyną usługą strony trzeciej zaangażowaną w tę aplikację jest OpenRouter, który przetwarza opisy objawów w celu generowania rekomendacji selekcji AI. OpenRouter nie ustawia plików cookie w Twojej przeglądarce. Nie są zintegrowane żadne sieci reklamowe, dostawcy analityki ani platformy mediów społecznościowych."
+      },
+      "consent": {
+        "title": "Zgoda na Cookie",
+        "content": "TriageFlow nie używa tradycyjnych plików cookie przeglądarki. Baner zgody jest wyświetlany dla przejrzystości dotyczącej naszego użycia localStorage i sessionStorage. Korzystając z aplikacji po zobaczeniu banera, potwierdzasz to wykorzystanie pamięci. Możesz wyczyścić wszystkie przechowywane dane w dowolnym momencie, czyszcząc dane witryny w przeglądarce."
+      }
     },
-    "sessionStorage": {
-      "title": "Użycie Session Storage",
-      "items": [
-        "Stan impersonacji admina — tymczasowo przechowuje oryginalny token admina podczas impersonacji użytkownika. Czyszczone po zamknięciu karty."
-      ]
-    },
-    "noTracking": {
-      "title": "Brak Śledzenia",
-      "description": "Nie używamy żadnej analityki, plików cookie śledzących, skryptów stron trzecich ani żadnej formy śledzenia zachowań użytkowników. To jest aplikacja demonstracyjna — to co widzisz, to wszystko co jest."
-    }
+    "banner": "TriageFlow nie używa tradycyjnych plików cookie. Używamy localStorage do tokenów uwierzytelniania, preferencji językowych i ustawień motywu. Nie używamy analityki ani śledzenia. Kontynuując, akceptujesz to wykorzystanie pamięci."
   }
 }

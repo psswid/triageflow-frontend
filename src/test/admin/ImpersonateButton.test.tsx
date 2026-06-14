@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import '../../i18n';
 // --- Hoisted mocks (available before vi.mock factory hoisting) ---
 const { mockPost, mockNavigate, mockImpersonate } = vi.hoisted(() => ({
   mockPost: vi.fn(),
@@ -49,10 +50,10 @@ describe('ImpersonateButton', () => {
     vi.clearAllMocks();
   });
 
-  it('renders button with Login as text', () => {
+  it('renders button with Impersonate text', () => {
     renderButton('user-1', 'test@example.com');
 
-    const button = screen.getByRole('button', { name: /login as/i });
+    const button = screen.getByRole('button', { name: /impersonate/i });
     expect(button).toBeInTheDocument();
     expect(button).not.toBeDisabled();
   });
@@ -64,7 +65,7 @@ describe('ImpersonateButton', () => {
 
     renderButton('user-42', 'user@example.com');
 
-    fireEvent.click(screen.getByRole('button', { name: /login as/i }));
+    fireEvent.click(screen.getByRole('button', { name: /impersonate/i }));
 
     await waitFor(() => {
       expect(mockPost).toHaveBeenCalledWith('/api/admin/users/user-42/impersonate');
@@ -77,7 +78,7 @@ describe('ImpersonateButton', () => {
     mockPost.mockReturnValue(new Promise<never>(() => {}));
 
     const { container } = renderButton();
-    fireEvent.click(screen.getByRole('button', { name: /login as/i }));
+    fireEvent.click(screen.getByRole('button', { name: /impersonate/i }));
 
     // Wait for React Query to mark mutation as pending
     await waitFor(() => {
@@ -96,7 +97,7 @@ describe('ImpersonateButton', () => {
     });
 
     renderButton('user-1', 'test@example.com');
-    fireEvent.click(screen.getByRole('button', { name: /login as/i }));
+    fireEvent.click(screen.getByRole('button', { name: /impersonate/i }));
 
     await waitFor(() => {
       expect(mockImpersonate).toHaveBeenCalledWith('test-token', 'test@example.com');

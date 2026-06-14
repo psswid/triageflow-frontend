@@ -50,5 +50,13 @@
   "empty": {
     "title": "Nothing here yet",
     "message": "Check back later."
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "intro": "This project was built as a portfolio demonstration. Feel free to reach out through any of the channels below.",
+    "portfolio": "Portfolio",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "Email"
   }
 }

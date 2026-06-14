@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useAdminFailedMessages, useRetryFailedMessage, useDeleteFailedMessage } from '../hooks/useAdminFailedMessages';
 import { Skeleton } from '../../../components/ui/Skeleton';
 import { ErrorFallback } from '../../../components/shared/ErrorFallback';
@@ -20,6 +21,7 @@ function messageTypeLabel(type: string): string {
 }
 
 export function FailedMessagesTable() {
+  const { t } = useTranslation('admin');
   const { toast } = useToast();
   const { data: messages, isLoading, error } = useAdminFailedMessages();
 
@@ -38,7 +40,7 @@ export function FailedMessagesTable() {
   };
 
   const handleDelete = (id: number) => {
-    if (window.confirm('Delete this failed message? This action cannot be undone.')) {
+    if (window.confirm(t('dashboard.failedMessages.delete') + '? This action cannot be undone.')) {
       deleteMutation.mutate(id);
     }
   };
@@ -60,8 +62,8 @@ export function FailedMessagesTable() {
   if (!messages || messages.length === 0) {
     return (
       <EmptyState
-        title="No failed messages"
-        description="All messages are processing normally."
+        title={t('dashboard.failedMessages.empty')}
+        description={t('dashboard.failedMessages.empty')}
       />
     );
   }
@@ -75,19 +77,19 @@ export function FailedMessagesTable() {
               ID
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              Type
+              {t('dashboard.failedMessages.table.type')}
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              Failed At
+              {t('dashboard.failedMessages.table.timestamp')}
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              Error
+              {t('dashboard.failedMessages.table.error')}
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              Preview
+              {t('dashboard.failedMessages.table.preview')}
             </th>
             <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              Actions
+              {t('dashboard.failedMessages.table.actions')}
             </th>
           </tr>
         </thead>
@@ -119,14 +121,14 @@ export function FailedMessagesTable() {
                     disabled={retryMutation.isPending}
                     className="rounded bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
                   >
-                    Retry
+                    {retryMutation.isPending ? t('dashboard.failedMessages.retrying') : t('dashboard.failedMessages.retry')}
                   </button>
                   <button
                     onClick={() => handleDelete(msg.id)}
                     disabled={deleteMutation.isPending}
                     className="rounded bg-red-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-50"
                   >
-                    Delete
+                    {t('dashboard.failedMessages.delete')}
                   </button>
                 </div>
               </td>

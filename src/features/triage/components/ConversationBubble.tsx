@@ -1,4 +1,5 @@
 import { clsx } from 'clsx';
+import { useTranslation } from 'react-i18next';
 
 type MessageType = 'initial_description' | 'question' | 'answer' | 'result';
 
@@ -13,6 +14,7 @@ export function ConversationBubble({
   content,
   timestamp,
 }: ConversationBubbleProps) {
+  const { t } = useTranslation('triage');
   const isUser = type === 'initial_description' || type === 'answer';
   const isResult = type === 'result';
 
@@ -36,7 +38,7 @@ export function ConversationBubble({
       >
         {content}
         {isResult && (
-          <span className="mt-1 block text-xs opacity-70">Triage outcome</span>
+          <span className="mt-1 block text-xs opacity-70">{t('conversation.finalResult')}</span>
         )}
       </div>
       <span

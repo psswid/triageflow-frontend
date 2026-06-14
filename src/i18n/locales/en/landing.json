@@ -4,10 +4,11 @@
     "subtitle": "Let's hallucinate who can help you based on your symptoms!",
     "disclaimer": "In case of a real medical issue, please contact a human specialist. This is a demonstration system.",
     "cta": "Try the Demo",
-    "secondaryCta": "See How It Works"
+    "secondary": "See How It Works"
   },
   "features": {
     "title": "What This Demo Showcases",
+    "disclaimer": "This is a portfolio demonstration project. Not a real medical service. Do not use for actual medical advice.",
     "aiTriage": {
       "title": "AI-Powered Triage",
       "description": "An LLM-driven interview pipeline that asks follow-up questions and produces a triage recommendation — specialist, urgency, and justification."
@@ -25,10 +26,17 @@
       "description": "Structured logging with correlation IDs, failed message recovery, CI pipeline with PHPStan level 5."
     }
   },
+  "demoPreview": {
+    "title": "See It In Action",
+    "subtitle": "A preview of the AI-powered triage interview interface.",
+    "alt": "TriageFlow triage interview interface mockup"
+  },
   "techStack": {
     "title": "Tech Stack",
     "backend": "Backend",
     "frontend": "Frontend",
-    "infra": "Infrastructure"
-  }
+    "infra": "Infrastructure",
+    "disclaimer": "Technologies used in this demonstration project."
+  },
+  "demoMode": "This is a portfolio demonstration project. Not a real medical service. Do not use for actual medical advice."
 }

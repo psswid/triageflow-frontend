@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import '../../i18n';
 import { TriageResultPage } from '../../features/triage/pages/TriageResultPage';
 import type { ConversationMessage, TriageSubmissionResource, ApiResponse } from '../../api/types';
 
@@ -179,7 +180,7 @@ describe('TriageResultPage', () => {
     renderTriageResultPage();
 
     await waitFor(() => {
-      expect(screen.getByText('Analysis in Progress')).toBeInTheDocument();
+      expect(screen.getByText('Triage not yet completed')).toBeInTheDocument();
     });
   });
 
@@ -195,7 +196,7 @@ describe('TriageResultPage', () => {
     renderTriageResultPage();
 
     await waitFor(() => {
-      expect(screen.getByText('Conversation So Far')).toBeInTheDocument();
+      expect(screen.getByText('Conversation History')).toBeInTheDocument();
     });
 
     expect(screen.getByText('I have a severe headache')).toBeInTheDocument();
@@ -208,7 +209,7 @@ describe('TriageResultPage', () => {
     renderTriageResultPage();
 
     await waitFor(() => {
-      expect(screen.getByText('New Triage')).toBeInTheDocument();
+      expect(screen.getByText('Start New Triage')).toBeInTheDocument();
     });
   });
 

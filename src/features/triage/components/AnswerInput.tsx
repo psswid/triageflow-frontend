@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { clsx } from 'clsx';
+import { useTranslation } from 'react-i18next';
 import { Button } from '../../../components/ui/Button';
 
 interface AnswerInputProps {
@@ -18,6 +19,7 @@ export function AnswerInput({
   currentTurn,
   error,
 }: AnswerInputProps) {
+  const { t } = useTranslation('triage');
   const [value, setValue] = useState('');
 
   const handleSubmit = useCallback(() => {
@@ -57,7 +59,7 @@ export function AnswerInput({
           onChange={(e) => setValue(e.target.value.slice(0, MAX_LENGTH))}
           onKeyDown={handleKeyDown}
           maxLength={MAX_LENGTH}
-          placeholder="Type your answer..."
+          placeholder={t('answerInput.placeholder')}
           disabled={isSubmitting}
           autoFocus
           className={clsx(
@@ -75,7 +77,7 @@ export function AnswerInput({
           disabled={!value.trim() || isSubmitting}
           size="sm"
         >
-          Send
+          {t('answerInput.submit')}
         </Button>
       </div>
       <span

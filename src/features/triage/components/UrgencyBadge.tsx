@@ -1,4 +1,5 @@
 import { clsx } from 'clsx';
+import { useTranslation } from 'react-i18next';
 
 interface UrgencyBadgeProps {
   readonly urgency: 'LOW' | 'MEDIUM' | 'HIGH' | 'EMERGENCY';
@@ -11,14 +12,10 @@ const urgencyClasses: Record<UrgencyBadgeProps['urgency'], string> = {
   EMERGENCY: 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300',
 };
 
-const urgencyLabel: Record<UrgencyBadgeProps['urgency'], string> = {
-  LOW: 'Low',
-  MEDIUM: 'Medium',
-  HIGH: 'High',
-  EMERGENCY: 'Emergency',
-};
-
 export function UrgencyBadge({ urgency }: UrgencyBadgeProps) {
+  const { t } = useTranslation('triage');
+  const urgencyLabel = t(`urgencyLabels.${urgency.toLowerCase()}`, urgency);
+
   return (
     <span
       className={clsx(
@@ -26,7 +23,7 @@ export function UrgencyBadge({ urgency }: UrgencyBadgeProps) {
         urgencyClasses[urgency],
       )}
     >
-      {urgencyLabel[urgency]}
+      {urgencyLabel}
     </span>
   );
 }

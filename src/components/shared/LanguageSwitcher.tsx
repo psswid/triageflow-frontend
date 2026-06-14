@@ -7,10 +7,10 @@ const LANGUAGES = [
 
 export function LanguageSwitcher() {
   const { i18n } = useTranslation();
-  const currentLang = i18n.language?.split('-')[0] || 'en';
+  const currentLang = i18n.language?.split('-')[0] ?? 'en';
 
   const switchLanguage = (lang: string) => {
-    i18n.changeLanguage(lang);
+    void i18n.changeLanguage(lang);
   };
 
   return (

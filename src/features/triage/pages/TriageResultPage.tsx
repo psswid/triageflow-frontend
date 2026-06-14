@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import type { AxiosError } from 'axios';
+import { useTranslation } from 'react-i18next';
 import type { ApiResponse, TriageSubmissionResource } from '../../../api/types';
 import { apiClient } from '../../../api/client';
 import { ENDPOINTS } from '../../../api/endpoints';
@@ -14,6 +15,7 @@ import { OutcomeCard } from '../components/OutcomeCard';
 type UrgencyLevel = 'LOW' | 'MEDIUM' | 'HIGH' | 'EMERGENCY';
 
 export function TriageResultPage() {
+  const { t } = useTranslation('triage');
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
@@ -54,12 +56,14 @@ export function TriageResultPage() {
     if (axiosError?.response?.status === 404) {
       return (
         <div className="py-12 text-center">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Result Not Found</h1>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+            {t('result.notFound', 'Result Not Found')}
+          </h1>
           <p className="mt-2 text-gray-500 dark:text-gray-400">
-            The requested triage result does not exist or has not been completed yet.
+            {t('result.checkBack')}
           </p>
           <Button className="mt-6" onClick={() => { void navigate('/triage'); }}>
-            New Triage
+            {t('result.goToNewTriage')}
           </Button>
         </div>
       );
@@ -68,12 +72,14 @@ export function TriageResultPage() {
     if (axiosError?.response?.status === 403) {
       return (
         <div className="py-12 text-center">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Access Denied</h1>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+            {t('result.accessDenied', 'Access Denied')}
+          </h1>
           <p className="mt-2 text-gray-500 dark:text-gray-400">
-            You do not have permission to view this triage result.
+            {t('result.notCompleted')}
           </p>
           <Button className="mt-6" onClick={() => { void navigate('/triage'); }}>
-            New Triage
+            {t('result.goToNewTriage')}
           </Button>
         </div>
       );
@@ -85,11 +91,11 @@ export function TriageResultPage() {
         <ErrorFallback
           error={error as Error}
           onRetry={() => void refetch()}
-          title="Something Went Wrong"
+          title={t('result.loadError', 'Something Went Wrong')}
         />
         <div className="text-center">
           <Button onClick={() => { void navigate('/triage'); }}>
-            New Triage
+            {t('result.goToNewTriage')}
           </Button>
         </div>
       </div>
@@ -105,17 +111,17 @@ export function TriageResultPage() {
   if (!outcome) {
     return (
       <div className="mx-auto max-w-3xl space-y-6 py-8">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Triage Result</h1>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{t('result.title')}</h1>
         <Card>
           <div className="py-8 text-center">
             <p className="text-lg font-medium text-gray-700 dark:text-gray-300">
-              Analysis in Progress
+              {t('result.notCompleted')}
             </p>
             <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-              The AI is still analyzing your symptoms. Please check back shortly.
+              {t('result.checkBack')}
             </p>
             <Button className="mt-6" onClick={() => { void navigate('/triage'); }}>
-              Return to Triage
+              {t('result.goToNewTriage')}
             </Button>
           </div>
         </Card>
@@ -123,7 +129,7 @@ export function TriageResultPage() {
         {conversationHistory.length > 0 && (
           <Card>
             <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
-              Conversation So Far
+              {t('result.conversationHistory')}
             </h2>
             <div className="flex flex-col gap-3">
               {conversationHistory.map((msg, i) => (
@@ -144,7 +150,7 @@ export function TriageResultPage() {
   // Full result with outcome
   return (
     <div className="mx-auto max-w-3xl space-y-6 py-8">
-      <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Triage Result</h1>
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{t('result.title')}</h1>
 
       <OutcomeCard
         specialist={outcome.specialist}
@@ -155,7 +161,7 @@ export function TriageResultPage() {
       {conversationHistory.length > 0 && (
         <Card>
           <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
-            Conversation History
+            {t('result.conversationHistory')}
           </h2>
           <div className="flex flex-col gap-3">
             {conversationHistory.map((msg, i) => (
@@ -171,7 +177,9 @@ export function TriageResultPage() {
       )}
 
       <div className="flex justify-center pt-4">
-        <Button onClick={() => { void navigate('/triage'); }}>New Triage</Button>
+        <Button onClick={() => { void navigate('/triage'); }}>
+          {t('result.goToNewTriage')}
+        </Button>
       </div>
     </div>
   );

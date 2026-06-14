@@ -25,7 +25,7 @@ function applyTheme(theme: Theme): void {
 
 export function useDarkMode() {
   const [theme, setTheme] = useState<Theme>(() => {
-    return getStoredTheme() || getSystemPreference();
+    return getStoredTheme() ?? getSystemPreference();
   });
 
   useEffect(() => {

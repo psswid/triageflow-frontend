@@ -4,10 +4,11 @@
     "subtitle": "Pozwól nam zhalucynować, kto może Ci pomóc na podstawie Twoich objawów!",
     "disclaimer": "W przypadku prawdziwego problemu medycznego skontaktuj się z prawdziwym specjalistą. To jest system demonstracyjny.",
     "cta": "Wypróbuj Demo",
-    "secondaryCta": "Zobacz Jak To Działa"
+    "secondary": "Zobacz Jak To Działa"
   },
   "features": {
     "title": "Co Demonstruje Ten Projekt",
+    "disclaimer": "To jest projekt demonstracyjny do portfolio. Nie jest to prawdziwa usługa medyczna. Nie należy go używać do rzeczywistych porad medycznych.",
     "aiTriage": {
       "title": "Selekcja Wspierana przez AI",
       "description": "Pipeline wywiadu sterowany przez LLM, który zadaje pytania uzupełniające i generuje rekomendację — specjalista, pilność, uzasadnienie."
@@ -25,10 +26,17 @@
       "description": "Strukturyzowane logowanie z identyfikatorami korelacji, odzyskiwanie nieudanych wiadomości, pipeline CI z PHPStan poziom 5."
     }
   },
+  "demoPreview": {
+    "title": "Zobacz To W Akcji",
+    "subtitle": "Podgląd interfejsu wywiadu triage wspieranego przez AI.",
+    "alt": "Makieta interfejsu wywiadu TriageFlow"
+  },
   "techStack": {
     "title": "Stack Technologiczny",
     "backend": "Backend",
     "frontend": "Frontend",
-    "infra": "Infrastruktura"
-  }
+    "infra": "Infrastruktura",
+    "disclaimer": "Technologie użyte w tym projekcie demonstracyjnym."
+  },
+  "demoMode": "To jest projekt demonstracyjny do portfolio. Nie jest prawdziwą usługą medyczną. Nie używaj do rzeczywistych porad medycznych."
 }

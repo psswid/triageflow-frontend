@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { clsx } from 'clsx';
+import { useTranslation } from 'react-i18next';
 import { Button } from '../../../components/ui/Button';
 
 interface SymptomInputProps {
@@ -15,6 +16,7 @@ export function SymptomInput({
   isSubmitting,
   error,
 }: SymptomInputProps) {
+  const { t } = useTranslation('triage');
   const [value, setValue] = useState('');
 
   const handleSubmit = useCallback(() => {
@@ -43,11 +45,10 @@ export function SymptomInput({
         htmlFor="symptom-description"
         className="block text-lg font-semibold text-gray-900 dark:text-gray-100"
       >
-        Describe your symptoms
+        {t('symptomInput.label')}
       </label>
       <p className="text-sm text-gray-500 dark:text-gray-400">
-        Please describe what you&apos;re experiencing in your own words. The AI
-        will ask follow-up questions to better understand your situation.
+        {t('subtitle')}
       </p>
       <textarea
         id="symptom-description"
@@ -56,7 +57,7 @@ export function SymptomInput({
         onKeyDown={handleKeyDown}
         maxLength={MAX_LENGTH}
         rows={4}
-        placeholder="e.g., I&apos;ve had a severe headache for the past 3 days..."
+        placeholder={t('symptomInput.placeholder')}
         disabled={isSubmitting}
         className={clsx(
           'w-full rounded-lg border px-4 py-3 text-gray-900 placeholder-gray-400 transition-colors resize-none',
@@ -83,7 +84,7 @@ export function SymptomInput({
           isLoading={isSubmitting}
           disabled={!value.trim() || isSubmitting}
         >
-          Submit
+          {isSubmitting ? t('symptomInput.submitting') : t('symptomInput.submit')}
         </Button>
       </div>
       {error && (

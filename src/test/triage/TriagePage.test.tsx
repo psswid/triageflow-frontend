@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import '../../i18n';
 
 // Mock scrollIntoView which jsdom doesn't implement
 Element.prototype.scrollIntoView = vi.fn();
@@ -58,7 +59,7 @@ describe('TriagePage', () => {
 
       render(<TriagePage />);
 
-      expect(screen.getByText('Symptom Check')).toBeInTheDocument();
+      expect(screen.getByText('New Triage')).toBeInTheDocument();
       expect(screen.getByText('Describe your symptoms')).toBeInTheDocument();
       expect(
         screen.getByRole('button', { name: /submit/i }),
@@ -88,7 +89,7 @@ describe('TriagePage', () => {
 
       expect(screen.getByText('Describe your symptoms')).toBeInTheDocument();
       // Submit button should be present but disabled/loading
-      const submitButton = screen.getByRole('button', { name: /submit/i });
+      const submitButton = screen.getByRole('button', { name: /analyzing/i });
       expect(submitButton).toBeDisabled();
     });
 
@@ -139,7 +140,7 @@ describe('TriagePage', () => {
 
       expect(screen.getByTestId('loader')).toBeInTheDocument();
       expect(
-        screen.getByText('Analyzing your symptoms...'),
+        screen.getByText('AI is analyzing your symptoms...'),
       ).toBeInTheDocument();
     });
   });
@@ -174,7 +175,7 @@ describe('TriagePage', () => {
 
       // Check answer input is rendered
       expect(
-        screen.getByPlaceholderText('Type your answer...'),
+        screen.getByPlaceholderText('Type your answer here...'),
       ).toBeInTheDocument();
       expect(screen.getByText('Question 1 of 3')).toBeInTheDocument();
 
@@ -194,7 +195,7 @@ describe('TriagePage', () => {
 
       render(<TriagePage />);
 
-      const input = screen.getByPlaceholderText('Type your answer...');
+      const input = screen.getByPlaceholderText('Type your answer here...');
       fireEvent.change(input, { target: { value: 'On the left side' } });
 
       const sendButton = screen.getByRole('button', { name: /send/i });
@@ -258,7 +259,7 @@ describe('TriagePage', () => {
 
       render(<TriagePage />);
 
-      expect(screen.getByText('Analysis Failed')).toBeInTheDocument();
+      expect(screen.getByText('Something went wrong. Please try again.')).toBeInTheDocument();
       expect(screen.getByText('AI processing failed')).toBeInTheDocument();
       expect(
         screen.getByRole('button', { name: /try again/i }),

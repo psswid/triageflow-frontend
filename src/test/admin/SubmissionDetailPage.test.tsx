@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import '../../i18n';
 import { SubmissionDetailPage } from '../../features/admin/pages/SubmissionDetailPage';
 import type { ConversationMessage, TriageSubmissionResource } from '../../api/types';
 
@@ -121,8 +122,8 @@ describe('SubmissionDetailPage', () => {
       expect(screen.getByRole('alert')).toBeInTheDocument();
     });
 
-    expect(screen.getByText('Submission not found')).toBeInTheDocument();
-    expect(screen.getByText('Retry')).toBeInTheDocument();
+    expect(screen.getByText('Submission not found.')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /try again/i })).toBeInTheDocument();
   });
 
   // --- Generic error state ---
@@ -135,8 +136,8 @@ describe('SubmissionDetailPage', () => {
       expect(screen.getByRole('alert')).toBeInTheDocument();
     });
 
-    expect(screen.getByText('Submission not found')).toBeInTheDocument();
-    expect(screen.getByText('Retry')).toBeInTheDocument();
+    expect(screen.getByText('Submission not found.')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /try again/i })).toBeInTheDocument();
   });
 
   // --- Success state with outcome and conversation ---

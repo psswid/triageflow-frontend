@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { apiClient } from '../../../api/client';
 import { ENDPOINTS } from '../../../api/endpoints';
 import { useAuth } from '../../../hooks/useAuth';
@@ -12,6 +13,7 @@ interface ImpersonateButtonProps {
 }
 
 export function ImpersonateButton({ userId }: ImpersonateButtonProps) {
+  const { t } = useTranslation('admin');
   const { impersonate } = useAuth();
   const navigate = useNavigate();
 
@@ -34,7 +36,7 @@ export function ImpersonateButton({ userId }: ImpersonateButtonProps) {
       onClick={() => mutation.mutate()}
       isLoading={mutation.isPending}
     >
-      Login as
+      {t('dashboard.users.impersonate')}
     </Button>
   );
 }

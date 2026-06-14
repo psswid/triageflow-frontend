@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import '../../i18n';
 import type { FailedMessageResource } from '../../api/types';
 
 const mockUseAdminFailedMessages = vi.fn();
@@ -73,10 +74,7 @@ describe('FailedMessagesTable', () => {
 
     renderComponent();
 
-    expect(screen.getByText('No failed messages')).toBeInTheDocument();
-    expect(
-      screen.getByText('All messages are processing normally.'),
-    ).toBeInTheDocument();
+    expect(screen.getAllByText('No failed messages.')[0]).toBeInTheDocument();
   });
 
   it('renders message rows with type, error, preview, and action buttons', () => {

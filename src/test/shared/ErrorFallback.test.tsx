@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
+import '../../i18n';
 import { ErrorFallback } from '../../components/shared/ErrorFallback';
 
 describe('ErrorFallback', () => {
@@ -9,14 +10,14 @@ describe('ErrorFallback', () => {
 
     expect(screen.getByText('Something went wrong')).toBeInTheDocument();
     expect(screen.getByText('Network failure')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /retry/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /try again/i })).toBeInTheDocument();
   });
 
   it('calls onRetry when retry is clicked', () => {
     const onRetry = vi.fn();
     render(<ErrorFallback error={new Error('fail')} onRetry={onRetry} />);
 
-    fireEvent.click(screen.getByRole('button', { name: /retry/i }));
+    fireEvent.click(screen.getByRole('button', { name: /try again/i }));
     expect(onRetry).toHaveBeenCalledOnce();
   });
 
@@ -45,7 +46,7 @@ describe('ErrorFallback', () => {
   it('does not render retry button when onRetry is not provided', () => {
     render(<ErrorFallback error={new Error('fail')} />);
 
-    expect(screen.queryByRole('button', { name: /retry/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /try again/i })).not.toBeInTheDocument();
     expect(screen.getByRole('alert')).toBeInTheDocument();
     expect(screen.getByText('fail')).toBeInTheDocument();
   });

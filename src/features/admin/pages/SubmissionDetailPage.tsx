@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAdminSubmission } from '../hooks/useAdminSubmission';
 import { Card } from '../../../components/ui/Card';
 import { Badge } from '../../../components/ui/Badge';
@@ -21,7 +22,7 @@ const URGENCY_BADGE: Record<string, 'low' | 'medium' | 'high' | 'emergency'> = {
   EMERGENCY: 'emergency',
 };
 
-function ConversationBubble({ message }: { message: ConversationMessage }) {
+function ConversationBubble({ message, t }: { message: ConversationMessage; t: (key: string) => string }) {
   const isUser = message.type === 'initial_description' || message.type === 'answer';
   const isResult = message.type === 'result';
 
@@ -37,10 +38,10 @@ function ConversationBubble({ message }: { message: ConversationMessage }) {
         }`}
       >
         <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
-          {message.type === 'initial_description' && 'Initial Description'}
-          {message.type === 'question' && 'AI Question'}
-          {message.type === 'answer' && 'User Answer'}
-          {message.type === 'result' && 'Triage Result'}
+          {message.type === 'initial_description' && t('conversation.initialDescription', 'Initial Description')}
+          {message.type === 'question' && t('conversation.aiQuestion', 'AI Question')}
+          {message.type === 'answer' && t('conversation.userAnswer', 'User Answer')}
+          {message.type === 'result' && t('conversation.triageResult', 'Triage Result')}
         </p>
         <p className="text-sm text-gray-900 dark:text-gray-100 whitespace-pre-wrap">{message.content}</p>
         <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">
@@ -52,6 +53,7 @@ function ConversationBubble({ message }: { message: ConversationMessage }) {
 }
 
 export function SubmissionDetailPage() {
+  const { t } = useTranslation('admin');
   const { id } = useParams<{ id: string }>();
   const { data: submission, isLoading, error, refetch } = useAdminSubmission(id);
 
@@ -69,16 +71,16 @@ export function SubmissionDetailPage() {
     return (
       <div className="space-y-4">
         <ErrorFallback
-          error={error ?? new Error('Submission not found')}
+          error={error ?? new Error(t('submissionDetail.notFound'))}
           onRetry={() => void refetch()}
-          title="Submission not found"
+          title={t('submissionDetail.notFound')}
         />
         <div className="text-center">
           <Link
             to="/admin"
             className="text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400"
           >
-            ← Back to Dashboard
+            ← {t('submissionDetail.backToList')}
           </Link>
         </div>
       </div>
@@ -95,10 +97,10 @@ export function SubmissionDetailPage() {
           to="/admin"
           className="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400"
         >
-          ← Back
+          ← {t('submissionDetail.backToList')}
         </Link>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-          Submission Detail
+          {t('submissionDetail.title')}
         </h1>
       </div>
 
@@ -106,30 +108,30 @@ export function SubmissionDetailPage() {
       <Card className="p-6">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           <div>
-            <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Status</p>
+            <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">{t('submissionDetail.status')}</p>
             <Badge variant={STATUS_BADGE[attributes.status] ?? 'pending'}>{attributes.status}</Badge>
           </div>
           <div>
-            <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">User</p>
+            <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">{t('submissionDetail.user')}</p>
             <p className="mt-1 text-sm font-medium text-gray-900 dark:text-gray-100">
               {attributes.userEmail ?? 'Unknown'}
             </p>
           </div>
           <div>
-            <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Type</p>
+            <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">{t('submissionDetail.synthetic')}</p>
             <p className="mt-1 text-sm text-gray-900 dark:text-gray-100">
               {attributes.isSynthetic ? 'Synthetic' : 'Real'}
             </p>
           </div>
           <div>
-            <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Submitted</p>
+            <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">{t('submissionDetail.submittedAt')}</p>
             <p className="mt-1 text-sm text-gray-900 dark:text-gray-100">
               {new Date(attributes.submittedAt).toLocaleString()}
             </p>
           </div>
           {attributes.processedAt && (
             <div>
-              <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Processed</p>
+              <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">{t('submissionDetail.processedAt', 'Processed')}</p>
               <p className="mt-1 text-sm text-gray-900 dark:text-gray-100">
                 {new Date(attributes.processedAt).toLocaleString()}
               </p>
@@ -137,7 +139,7 @@ export function SubmissionDetailPage() {
           )}
           {attributes.processingDuration !== null && (
             <div>
-              <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Duration</p>
+              <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">{t('submissionDetail.processingTime')}</p>
               <p className="mt-1 text-sm text-gray-900 dark:text-gray-100">
                 {attributes.processingDuration < 60
                   ? `${attributes.processingDuration}s`
@@ -151,23 +153,23 @@ export function SubmissionDetailPage() {
       {/* Outcome */}
       {attributes.outcome && (
         <Card className="p-6">
-          <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">Triage Outcome</h2>
+          <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">{t('submissionDetail.outcome', 'Triage Outcome')}</h2>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
             <div>
-              <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Specialist</p>
+              <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">{t('submissionDetail.specialist', 'Specialist')}</p>
               <p className="mt-1 text-sm font-medium text-gray-900 dark:text-gray-100">
                 {attributes.outcome.specialist}
               </p>
             </div>
             <div>
-              <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Urgency</p>
+              <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">{t('submissionDetail.urgency', 'Urgency')}</p>
               <Badge variant={URGENCY_BADGE[attributes.outcome.urgency] ?? 'medium'}>
                 {attributes.outcome.urgency}
               </Badge>
             </div>
           </div>
           <div className="mt-4">
-            <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Justification</p>
+            <p className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">{t('submissionDetail.justification', 'Justification')}</p>
             <p className="mt-1 text-sm text-gray-700 dark:text-gray-300">
               {attributes.outcome.justification}
             </p>
@@ -178,12 +180,12 @@ export function SubmissionDetailPage() {
       {/* Conversation History */}
       {attributes.conversationHistory && attributes.conversationHistory.length > 0 && (
         <Card className="p-6">
-          <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
-            Conversation History
-          </h2>
+            <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+              {t('submissionDetail.conversation')}
+            </h2>
           <div className="space-y-4">
             {attributes.conversationHistory.map((message, index) => (
-              <ConversationBubble key={index} message={message} />
+              <ConversationBubble key={index} message={message} t={t} />
             ))}
           </div>
         </Card>
@@ -195,7 +197,7 @@ export function SubmissionDetailPage() {
           to={`/triage/${submission.id}/result`}
           className="inline-block text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400"
         >
-          View as User →
+          {t('submissionDetail.viewAsUser', 'View as User →')}
         </Link>
       )}
     </div>

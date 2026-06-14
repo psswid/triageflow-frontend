@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import '../../i18n';
 import type { UserResource } from '../../api/types';
 
 const mockUseAdminUsers = vi.fn();
@@ -137,9 +138,6 @@ describe('UsersTable', () => {
 
     renderUsersTable();
 
-    expect(screen.getByText('No users found')).toBeInTheDocument();
-    expect(
-      screen.getByText('There are no users to display.'),
-    ).toBeInTheDocument();
+    expect(screen.getAllByText('No users found.')[0]).toBeInTheDocument();
   });
 });

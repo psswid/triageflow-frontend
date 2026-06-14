@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Badge } from '../../../components/ui/Badge';
 import { EmptyState } from '../../../components/shared/EmptyState';
 import { Skeleton } from '../../../components/ui/Skeleton';
@@ -27,6 +28,8 @@ const URGENCY_BADGE: Record<string, 'low' | 'medium' | 'high' | 'emergency'> = {
 };
 
 export function SubmissionsTable({ submissions, isLoading, error }: SubmissionsTableProps) {
+  const { t } = useTranslation('admin');
+
   if (isLoading) {
     return (
       <div data-testid="submissions-loading">
@@ -40,7 +43,7 @@ export function SubmissionsTable({ submissions, isLoading, error }: SubmissionsT
   }
 
   if (!submissions || submissions.length === 0) {
-    return <EmptyState title="No submissions" description="No triage submissions have been created yet." />;
+    return <EmptyState title={t('dashboard.submissions.empty')} description={t('dashboard.submissions.empty')} />;
   }
 
   return (
@@ -48,13 +51,13 @@ export function SubmissionsTable({ submissions, isLoading, error }: SubmissionsT
       <table className="w-full text-left text-sm text-gray-700 dark:text-gray-300">
         <thead className="border-b border-gray-200 dark:border-gray-700 text-xs uppercase text-gray-500 dark:text-gray-400">
           <tr>
-            <th className="px-4 py-3 font-medium">Status</th>
-            <th className="px-4 py-3 font-medium">User</th>
-            <th className="px-4 py-3 font-medium">Type</th>
-            <th className="px-4 py-3 font-medium">Specialist</th>
-            <th className="px-4 py-3 font-medium">Urgency</th>
-            <th className="px-4 py-3 font-medium">Submitted</th>
-            <th className="px-4 py-3 font-medium">Actions</th>
+            <th className="px-4 py-3 font-medium">{t('dashboard.submissions.table.status')}</th>
+            <th className="px-4 py-3 font-medium">{t('dashboard.submissions.table.user')}</th>
+            <th className="px-4 py-3 font-medium">{t('dashboard.submissions.table.synthetic')}</th>
+            <th className="px-4 py-3 font-medium">{t('dashboard.submissions.table.specialist')}</th>
+            <th className="px-4 py-3 font-medium">{t('dashboard.submissions.table.urgency')}</th>
+            <th className="px-4 py-3 font-medium">{t('dashboard.submissions.table.date')}</th>
+            <th className="px-4 py-3 font-medium">{t('dashboard.submissions.table.actions')}</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
@@ -75,7 +78,7 @@ export function SubmissionsTable({ submissions, isLoading, error }: SubmissionsT
               </td>
               <td className="px-4 py-3">
                 {submission.attributes.isSynthetic ? (
-                  <span className="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900 dark:text-blue-300">Synthetic</span>
+                  <span className="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900 dark:text-blue-300">{t('dashboard.submissions.table.synthetic')}</span>
                 ) : (
                   <span className="text-gray-500">Real</span>
                 )}
@@ -98,7 +101,7 @@ export function SubmissionsTable({ submissions, isLoading, error }: SubmissionsT
                   to={`/admin/submissions/${submission.id}`}
                   className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium"
                 >
-                  View
+                  {t('dashboard.submissions.viewDetails')}
                 </Link>
               </td>
             </tr>

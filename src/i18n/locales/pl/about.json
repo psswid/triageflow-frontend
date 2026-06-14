@@ -3,14 +3,30 @@
   "intro": "TriageFlow to dwutygodniowy projekt portfolio demonstrujący biegłość w full-stack development z nowoczesnymi narzędziami i integracją AI.",
   "who": {
     "title": "Kto To Zbudował",
-    "description": "Zbudowane przez Piotra Świderskiego — full-stack developera eksplorującego przecięcie AI, symulacji medycznych i nowoczesnej architektury webowej."
+    "body": "Zbudowane przez Piotra Świderskiego — full-stack developera eksplorującego przecięcie AI, symulacji medycznych i nowoczesnej architektury webowej.",
+    "github": "Zobacz Profil GitHub"
   },
   "why": {
     "title": "Dlaczego TriageFlow",
-    "description": "Domena selekcji medycznej dostarcza bogatych wyzwań modelowania: maszyny stanów, asynchroniczne wiadomości, pipeline'y AI i kontrolę dostępu opartą na rolach — wszystko w kompaktowym, demonstracyjnym zakresie."
+    "body": "Domena selekcji medycznej dostarcza bogatych wyzwań modelowania: maszyny stanów, asynchroniczne wiadomości, pipeline'y AI i kontrolę dostępu opartą na rolach — wszystko w kompaktowym, demonstracyjnym zakresie."
   },
   "disclaimer": {
     "title": "Ważne Zastrzeżenie",
-    "description": "TriageFlow jest systemem demonstracyjnym. Nie udziela prawdziwych porad medycznych. Wszystkie rekomendacje selekcji są generowane przez AI wyłącznie w celach ilustracyjnych. Jeśli masz problem medyczny, skonsultuj się z wykwalifikowanym specjalistą."
+    "body": "<p>TriageFlow jest <strong>systemem demonstracyjnym</strong>. Nie udziela prawdziwych porad medycznych. Wszystkie rekomendacje selekcji są generowane przez AI wyłącznie w celach ilustracyjnych.</p><p class=\"mt-3\">Jeśli masz problem medyczny, skonsultuj się z wykwalifikowanym specjalistą.</p>"
+  },
+  "techDecisions": {
+    "title": "Decyzje Techniczne",
+    "architecture": "Warstwy Czystej Architektury",
+    "architectureDetail": "Warstwy domeny, aplikacji i infrastruktury z Symfony Messenger do przetwarzania asynchronicznego i wzorcem portów/adapterów.",
+    "state": "React + TanStack Query",
+    "stateDetail": "Zarządzanie stanem serwera z TanStack Query do cache'owania, odświeżania w tle i optymistycznych aktualizacji.",
+    "ai": "Pipeline Wywiadu Sterowany LLM",
+    "aiDetail": "Generowanie pytań uzupełniających przez GitHub Copilot, tworzące do 3 rund interaktywnej rozmowy diagnostycznej.",
+    "data": "Generowanie Danych Syntetycznych",
+    "dataDetail": "Wszystkie zgłoszenia są syntetyczne, generowane przez harmonogram z realistyczną symulacją prędkości pisania.",
+    "testing": "TDD + 80% Pokrycia",
+    "testingDetail": "Test-Driven Development z PHPUnit, Pest, Vitest i Playwright. Cele pokrycia: jednostkowe, integracyjne i E2E.",
+    "demo": "Zakres Portfolio 2 Tygodnie",
+    "demoDetail": "Kompaktowy, demonstracyjny zakres — symulacja selekcji medycznej z integracją AI, zbudowana jako proof of concept."
   }
 }

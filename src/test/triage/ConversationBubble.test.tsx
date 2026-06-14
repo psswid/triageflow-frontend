@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import '../../i18n';
 import { ConversationBubble } from '../../features/triage/components/ConversationBubble';
 
 describe('ConversationBubble', () => {
@@ -32,7 +33,7 @@ describe('ConversationBubble', () => {
       />,
     );
 
-    expect(screen.getByText('Triage outcome')).toBeInTheDocument();
+    expect(screen.getByText('Triage result available')).toBeInTheDocument();
   });
 
   it('renders the message content text', () => {

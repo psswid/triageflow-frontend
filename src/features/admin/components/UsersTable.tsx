@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useAdminUsers } from '../hooks/useAdminUsers';
 import { Skeleton } from '../../../components/ui/Skeleton';
 import { EmptyState } from '../../../components/shared/EmptyState';
@@ -23,6 +24,7 @@ function roleBadgeClasses(role: string): string {
 }
 
 export function UsersTable() {
+  const { t } = useTranslation('admin');
   const { data: users, isLoading, error } = useAdminUsers();
 
   if (isLoading) {
@@ -45,8 +47,8 @@ export function UsersTable() {
   if (filteredUsers.length === 0) {
     return (
       <EmptyState
-        title="No users found"
-        description="There are no users to display."
+        title={t('dashboard.users.empty')}
+        description={t('dashboard.users.empty')}
       />
     );
   }
@@ -57,16 +59,16 @@ export function UsersTable() {
         <thead className="bg-gray-50 dark:bg-gray-800">
           <tr>
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              Email
+              {t('dashboard.users.table.email')}
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              Roles
+              {t('dashboard.users.table.roles')}
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              Created
+              {t('dashboard.users.table.created')}
             </th>
             <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              Actions
+              {t('dashboard.users.table.actions')}
             </th>
           </tr>
         </thead>

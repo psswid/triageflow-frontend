@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '../ui/Button';
 
 interface ErrorFallbackProps {
@@ -8,6 +9,7 @@ interface ErrorFallbackProps {
 }
 
 export function ErrorFallback({ error, onRetry, title }: ErrorFallbackProps) {
+  const { t } = useTranslation('common');
   const [showDetails, setShowDetails] = useState(false);
 
   return (
@@ -32,7 +34,7 @@ export function ErrorFallback({ error, onRetry, title }: ErrorFallbackProps) {
         </svg>
       </div>
       <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-        {title ?? 'Something went wrong'}
+        {title ?? t('error.title')}
       </h2>
       <p className="mt-2 max-w-md text-sm text-gray-500 dark:text-gray-400">
         {error.message}
@@ -42,7 +44,7 @@ export function ErrorFallback({ error, onRetry, title }: ErrorFallbackProps) {
         onClick={() => setShowDetails(!showDetails)}
         className="mt-2 text-xs text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 underline"
       >
-        {showDetails ? 'Hide' : 'Show'} error details
+        {showDetails ? t('hide', 'Hide') : t('show', 'Show')} {t('error.details')}
       </button>
       {showDetails && (
         <pre className="mt-2 max-w-md overflow-auto rounded bg-gray-100 p-3 text-xs text-gray-700 dark:bg-gray-800 dark:text-gray-300">
@@ -52,7 +54,7 @@ export function ErrorFallback({ error, onRetry, title }: ErrorFallbackProps) {
 
       {onRetry && (
         <div className="mt-6 flex items-center gap-3">
-          <Button onClick={onRetry}>Retry</Button>
+          <Button onClick={onRetry}>{t('error.retry')}</Button>
         </div>
       )}
     </div>

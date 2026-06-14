@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
+import '../../i18n';
 import type { TriageSubmissionResource } from '../../api/types';
 
 vi.mock('../../components/ui/Badge', () => ({
@@ -59,7 +60,7 @@ describe('SubmissionsTable', () => {
 
   it('shows empty state when no submissions', () => {
     renderTable([], false, null);
-    expect(screen.getByText('No submissions')).toBeInTheDocument();
+    expect(screen.getAllByText('No submissions yet.')[0]).toBeInTheDocument();
   });
 
   it('renders submission rows', () => {
@@ -87,7 +88,7 @@ describe('SubmissionsTable', () => {
     expect(screen.getByText('pending')).toBeInTheDocument();
     expect(screen.getByText('test@example.com')).toBeInTheDocument();
     expect(screen.getByText('test2@example.com')).toBeInTheDocument();
-    expect(screen.getAllByText('View')).toHaveLength(2);
+    expect(screen.getAllByText('View Details')).toHaveLength(2);
   });
 
   it('shows urgency as badge when outcome exists', () => {

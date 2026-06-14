@@ -22,7 +22,7 @@ import plAuth from './locales/pl/auth.json';
 import plTriage from './locales/pl/triage.json';
 import plAdmin from './locales/pl/admin.json';
 
-i18n
+void i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({

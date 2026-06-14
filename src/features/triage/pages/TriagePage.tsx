@@ -1,5 +1,6 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Card } from '../../../components/ui/Card';
 import { Loader } from '../../../components/shared/Loader';
 import { ErrorBoundary } from '../../../components/shared/ErrorBoundary';
@@ -10,6 +11,7 @@ import { AnswerInput } from '../components/AnswerInput';
 import { ConversationBubble } from '../components/ConversationBubble';
 
 export function TriagePage() {
+  const { t } = useTranslation(['triage', 'common']);
   const navigate = useNavigate();
   const conversationEndRef = useRef<HTMLDivElement>(null);
   const {
@@ -44,9 +46,9 @@ export function TriagePage() {
     <div className="mx-auto max-w-2xl px-4 py-8">
       <ErrorBoundary>
         <Card>
-          <h1 className="mb-6 text-2xl font-bold text-gray-900 dark:text-gray-100">
-            Symptom Check
-          </h1>
+            <h1 className="mb-6 text-2xl font-bold text-gray-900 dark:text-gray-100">
+              {t('title')}
+            </h1>
 
           {/* STATE: idle — initial symptom input */}
           {/* STATE: submitting — symptom input with loading spinner */}
@@ -60,7 +62,7 @@ export function TriagePage() {
 
           {/* STATE: polling — analyzing with loader */}
           {state === 'polling' && (
-            <Loader message="Analyzing your symptoms..." />
+            <Loader message={t('status.processing')} />
           )}
 
           {/* STATE: awaiting_answer — conversation + answer input */}
@@ -109,13 +111,13 @@ export function TriagePage() {
                 </svg>
               </div>
               <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                Analysis Failed
+                {t('status.failed')}
               </h2>
               <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                {error ?? 'Something went wrong during analysis. Please try again.'}
+                {error ?? t('status.failed')}
               </p>
               <Button className="mt-4" onClick={handleRetry}>
-                Try Again
+                {t('common:error.retry')}
               </Button>
             </div>
           )}

@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
+import { useTranslation } from 'react-i18next';
 import { apiClient } from '../../../api/client';
 import { ENDPOINTS } from '../../../api/endpoints';
 import type { RegisterRequest, RegisterResponse } from '../../../api/types';
@@ -9,6 +10,7 @@ import { Input } from '../../../components/ui/Input';
 import { Button } from '../../../components/ui/Button';
 
 export function RegisterPage() {
+  const { t } = useTranslation('auth');
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -36,7 +38,7 @@ export function RegisterPage() {
 
   const validatePasswordsMatch = (): boolean => {
     if (password !== passwordConfirmation) {
-      setErrors((prev) => ({ ...prev, password_confirmation: 'Passwords do not match' }));
+      setErrors((prev) => ({ ...prev, password_confirmation: t('register.passwordMismatch') }));
       return false;
     }
     return true;
@@ -52,15 +54,20 @@ export function RegisterPage() {
   return (
     <div className="mx-auto max-w-md py-12">
       <Card>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Create Account</h1>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{t('register.title')}</h1>
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-          <Input label="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} error={errors.email} required />
-          <Input label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} error={errors.password} required minLength={8} />
-          <Input label="Confirm Password" type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} error={errors.password_confirmation} required minLength={8} />
-          <Button type="submit" className="w-full" isLoading={register.isPending}>Register</Button>
+          <Input label={t('register.email')} type="email" value={email} onChange={(e) => setEmail(e.target.value)} error={errors.email} required />
+          <Input label={t('register.password')} type="password" value={password} onChange={(e) => setPassword(e.target.value)} error={errors.password} required minLength={8} />
+          <Input label={t('register.confirmPassword')} type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} error={errors.password_confirmation} required minLength={8} />
+          <Button type="submit" className="w-full" isLoading={register.isPending}>
+            {register.isPending ? t('register.submitting') : t('register.submit')}
+          </Button>
         </form>
         <p className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
-          Already have an account? <Link to="/login" className="text-blue-600 hover:underline dark:text-blue-400">Login</Link>
+          {t('register.haveAccount')}{' '}
+          <Link to="/login" className="text-blue-600 hover:underline dark:text-blue-400">
+            {t('register.loginLink')}
+          </Link>
         </p>
       </Card>
     </div>

@@ -1,30 +1,32 @@
 import { isRouteErrorResponse, useRouteError, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Button } from '../ui/Button';
 
-function errorMessage(error: unknown): string {
+function errorMessage(error: unknown, t: (key: string, fallback?: string) => string): string {
   if (isRouteErrorResponse(error)) {
-    if (error.status === 404) return 'The page you are looking for does not exist.';
-    if (error.status === 403) return 'You do not have permission to access this page.';
-    if (error.status === 401) return 'Please log in to access this page.';
-    return error.statusText || 'An unexpected error occurred.';
+    if (error.status === 404) return t('notFound.message');
+    if (error.status === 403) return t('error.accessDenied', 'You do not have permission to access this page.');
+    if (error.status === 401) return t('error.unauthorized', 'Please log in to access this page.');
+    return error.statusText || t('error.unexpected', 'An unexpected error occurred.');
   }
 
   if (error instanceof Error) return error.message;
-  return 'An unexpected error occurred.';
+  return t('error.unexpected', 'An unexpected error occurred.');
 }
 
-function errorTitle(error: unknown): string {
+function errorTitle(error: unknown, t: (key: string, fallback?: string) => string): string {
   if (isRouteErrorResponse(error)) {
-    if (error.status === 404) return 'Page Not Found';
-    if (error.status === 403) return 'Access Denied';
-    if (error.status === 401) return 'Unauthorized';
-    return 'Something went wrong';
+    if (error.status === 404) return t('notFound.title');
+    if (error.status === 403) return t('error.accessDeniedTitle', 'Access Denied');
+    if (error.status === 401) return t('error.unauthorizedTitle', 'Unauthorized');
+    return t('error.title');
   }
 
-  return 'Something went wrong';
+  return t('error.title');
 }
 
 export function RouteErrorFallback() {
+  const { t } = useTranslation('common');
   const error = useRouteError();
 
   return (
@@ -45,10 +47,10 @@ export function RouteErrorFallback() {
         </svg>
       </div>
       <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100">
-        {errorTitle(error)}
+        {errorTitle(error, t)}
       </h1>
       <p className="mt-2 max-w-md text-sm text-gray-500 dark:text-gray-400">
-        {errorMessage(error)}
+        {errorMessage(error, t)}
       </p>
       {!isRouteErrorResponse(error) && (
         <p className="mt-1 text-xs text-gray-400 dark:text-gray-500 font-mono">
@@ -59,13 +61,13 @@ export function RouteErrorFallback() {
         <Button
           onClick={() => window.location.reload()}
         >
-          Try Again
+          {t('error.retry')}
         </Button>
         <Link
           to="/"
           className="text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
         >
-          Go Home
+          {t('error.goHome')}
         </Link>
       </div>
     </div>

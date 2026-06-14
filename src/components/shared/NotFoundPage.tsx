@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Button } from '../ui/Button';
 
 export function NotFoundPage() {
+  const { t } = useTranslation('common');
+
   return (
     <div className="flex flex-col items-center justify-center py-16 text-center">
       <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800">
@@ -19,12 +22,12 @@ export function NotFoundPage() {
           />
         </svg>
       </div>
-      <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100">Page Not Found</h1>
+      <h1 className="text-xl font-bold text-gray-900 dark:text-gray-100">{t('notFound.title')}</h1>
       <p className="mt-2 max-w-md text-sm text-gray-500 dark:text-gray-400">
-        The page you are looking for does not exist or has been moved.
+        {t('notFound.message')}
       </p>
       <Link to="/" className="mt-6">
-        <Button>Go Home</Button>
+        <Button>{t('notFound.goHome')}</Button>
       </Link>
     </div>
   );

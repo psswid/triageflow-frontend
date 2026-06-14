@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import '../../i18n';
 
 const mockUseAdminStats = vi.fn();
 
@@ -61,9 +62,9 @@ describe('StatsGrid', () => {
 
     expect(screen.getByText('Total Submissions')).toBeInTheDocument();
     expect(screen.getByText('42')).toBeInTheDocument();
-    expect(screen.getByText('Synthetic')).toBeInTheDocument();
+    expect(screen.getByText('Synthetic Cases')).toBeInTheDocument();
     expect(screen.getByText('10')).toBeInTheDocument();
-    expect(screen.getByText('Avg Duration')).toBeInTheDocument();
+    expect(screen.getByText('Avg Processing Time')).toBeInTheDocument();
     expect(screen.getByText('2m 0s')).toBeInTheDocument();
   });
 
