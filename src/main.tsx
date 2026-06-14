@@ -7,6 +7,14 @@ import { ToastProvider } from './components/ui/ToastProvider';
 import './i18n';
 import './styles/index.css';
 
+// Initialize dark mode before React hydrates to prevent flash
+const stored = localStorage.getItem('theme');
+if (stored === 'dark' || stored === 'light') {
+  document.documentElement.classList.toggle('dark', stored === 'dark');
+} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  document.documentElement.classList.add('dark');
+}
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

@@ -1,4 +1,8 @@
 {
+  "header": {
+    "openMenu": "Otwórz menu",
+    "closeMenu": "Zamknij menu"
+  },
   "appName": "TriageFlow",
   "tagline": "Demo Preselekcji Medycznej Wspieranej przez AI",
   "nav": {

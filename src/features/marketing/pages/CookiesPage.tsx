@@ -52,10 +52,7 @@ export default function CookiesPage() {
             ))}
 
             <section className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6">
-              <h2 className="text-xl font-semibold font-heading text-gray-900 dark:text-gray-100">
-                {t('cookies.banner')}
-              </h2>
-              <p className="mt-3 text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                 {t('cookies.banner')}
               </p>
             </section>

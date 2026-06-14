@@ -54,6 +54,9 @@ export default function LandingPage() {
             <p className="mt-6 text-lg sm:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
               {t('hero.subtitle')}
             </p>
+            <p className="text-sm text-primary-200 dark:text-primary-300/80 mt-4">
+              {t('hero.disclaimer')}
+            </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/register"
@@ -75,6 +78,9 @@ export default function LandingPage() {
       {/* Features Section */}
       <section className="py-20 bg-white dark:bg-gray-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center font-heading mb-12">
+            {t('features.title')}
+          </h2>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {features.map(({ key, icon: Icon }) => (
               <div

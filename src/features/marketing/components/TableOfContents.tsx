@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface TocItem {
   id: string
@@ -10,6 +11,7 @@ interface TableOfContentsProps {
 }
 
 export function TableOfContents({ items }: TableOfContentsProps) {
+  const { t } = useTranslation('legal')
   const [activeId, setActiveId] = useState<string>('')
 
   useEffect(() => {
@@ -36,7 +38,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
     <nav className="hidden lg:block w-56 shrink-0" aria-label="Table of contents">
       <div className="sticky top-24 space-y-1">
         <p className="text-xs font-semibold uppercase text-gray-400 dark:text-gray-500 mb-3 tracking-wider">
-          On this page
+          {t('toc.label')}
         </p>
         {items.map(({ id, title }) => (
           <a

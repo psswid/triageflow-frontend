@@ -31,8 +31,9 @@ export default function AboutPage() {
 
         {/* Intro */}
         <section className="mt-8">
-          <div className="max-w-none text-gray-600 dark:text-gray-400 leading-relaxed"
-               dangerouslySetInnerHTML={{ __html: t('intro') }} />
+          <p className="max-w-none text-gray-600 dark:text-gray-400 leading-relaxed">
+            {t('intro')}
+          </p>
         </section>
 
         {/* Who Built This */}
@@ -54,8 +55,9 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="mt-6 max-w-none text-gray-600 dark:text-gray-400 leading-relaxed"
-               dangerouslySetInnerHTML={{ __html: t('who.body') }} />
+          <p className="mt-6 max-w-none text-gray-600 dark:text-gray-400 leading-relaxed">
+            {t('who.body')}
+          </p>
         </section>
 
         {/* Why TriageFlow */}
@@ -63,8 +65,9 @@ export default function AboutPage() {
           <h2 className="text-2xl font-semibold font-heading border-l-4 border-primary-500 pl-4 text-gray-900 dark:text-gray-100">
             {t('why.title')}
           </h2>
-          <div className="mt-6 max-w-none text-gray-600 dark:text-gray-400 leading-relaxed"
-               dangerouslySetInnerHTML={{ __html: t('why.body') }} />
+          <p className="mt-6 max-w-none text-gray-600 dark:text-gray-400 leading-relaxed">
+            {t('why.body')}
+          </p>
         </section>
 
         {/* Tech Decisions */}

@@ -1,4 +1,8 @@
 {
+  "header": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
   "appName": "TriageFlow",
   "tagline": "AI-Powered Patient Pre-Screening Demo",
   "nav": {

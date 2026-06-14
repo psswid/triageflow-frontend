@@ -23,16 +23,12 @@ import { MySubmissionsPage } from './features/submissions/pages/MySubmissionsPag
 
 export const router = createBrowserRouter([
   // ================================================================
-  // AUTH & APP ROUTES (AppLayout)
-  // Must come FIRST so specific paths match before MarketingLayout's
-  // catch-all below. AppLayout wraps auth, protected, and admin
-  // routes with the authenticated header/nav.
+  // UNAUTH ROUTES — login, register, verify-email
+  // No AppLayout wrapper — standalone pages for unauthenticated users.
   // ================================================================
   {
-    element: <AppLayout />,
     errorElement: <RouteErrorFallback />,
     children: [
-      // --- Auth pages (no auth required — under AppLayout without ProtectedRoute) ---
       {
         path: 'login',
         lazy: () =>
@@ -48,17 +44,21 @@ export const router = createBrowserRouter([
           })),
       },
       { path: 'verify-email', element: <VerifyEmailPage /> },
+    ],
+  },
 
-      // --- Protected pages (auth required) ---
-      {
-        element: <ProtectedRoute />,
-        errorElement: <RouteErrorFallback />,
-        children: [
-          { path: 'triage', element: <TriagePage /> },
-          { path: 'triage/:id/result', element: <TriageResultPage /> },
-          { path: 'submissions', element: <MySubmissionsPage /> },
-        ],
-      },
+  // ================================================================
+  // AUTHENTICATED ROUTES (AppLayout + ProtectedRoute)
+  // AppLayout wraps protected and admin routes with the authenticated
+  // header/nav.
+  // ================================================================
+  {
+    element: <ProtectedRoute><AppLayout /></ProtectedRoute>,
+    errorElement: <RouteErrorFallback />,
+    children: [
+      { index: true, path: 'triage', element: <TriagePage /> },
+      { path: 'triage/:id/result', element: <TriageResultPage /> },
+      { path: 'submissions', element: <MySubmissionsPage /> },
 
       // --- Admin pages (auth + admin role required, lazy loaded) ---
       {

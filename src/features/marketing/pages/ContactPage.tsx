@@ -56,7 +56,7 @@ export default function ContactPage() {
               <GithubIcon className="w-4 h-4" /> {t('contact.github')}
             </a>
             <a
-              href="https://linkedin.com/in/piotr-swiderski"
+              href="https://linkedin.com/in/psswid"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 rounded-xl border border-gray-300 dark:border-gray-700 px-4 py-3 font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
