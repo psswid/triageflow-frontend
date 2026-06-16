@@ -46,7 +46,7 @@ export function VerifyEmailPage() {
   }, [token]);
 
   return (
-    <div className="mx-auto max-w-md py-12">
+    <main className="mx-auto max-w-md py-12">
       <Card>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{t('verifyEmail.title')}</h1>
 
@@ -61,7 +61,7 @@ export function VerifyEmailPage() {
             <p className="text-green-600 dark:text-green-400">{message || t('verifyEmail.success')}</p>
             <Link
               to="/login"
-              className="inline-block text-blue-600 hover:underline dark:text-blue-400"
+              className="inline-block text-blue-600 underline hover:no-underline dark:text-blue-400"
             >
               {t('verifyEmail.goToLogin')}
             </Link>
@@ -73,7 +73,7 @@ export function VerifyEmailPage() {
             <p className="text-blue-600 dark:text-blue-400">{message || t('verifyEmail.alreadyVerified')}</p>
             <Link
               to="/login"
-              className="inline-block text-blue-600 hover:underline dark:text-blue-400"
+              className="inline-block text-blue-600 underline hover:no-underline dark:text-blue-400"
             >
               {t('verifyEmail.goToLogin')}
             </Link>
@@ -94,7 +94,7 @@ export function VerifyEmailPage() {
             </p>
             <Link
               to="/register"
-              className="inline-block text-blue-600 hover:underline dark:text-blue-400"
+              className="inline-block text-blue-600 underline hover:no-underline dark:text-blue-400"
             >
               {t('register.title')}
             </Link>
@@ -107,6 +107,6 @@ export function VerifyEmailPage() {
           </div>
         )}
       </Card>
-    </div>
+    </main>
   );
 }

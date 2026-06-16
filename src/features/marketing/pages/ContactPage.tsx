@@ -43,7 +43,7 @@ export default function ContactPage() {
               href="https://piotrswiderski.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 rounded-xl bg-accent-500 text-white px-4 py-3 font-medium hover:bg-accent-600 transition-colors"
+              className="flex items-center justify-center gap-2 rounded-xl bg-accent-600 text-white px-4 py-3 font-medium hover:bg-accent-700 transition-colors"
             >
               <Globe className="w-4 h-4" /> {t('contact.portfolio')}
             </a>

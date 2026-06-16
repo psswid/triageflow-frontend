@@ -7,7 +7,7 @@ import { ErrorFallback } from '../../../components/shared/ErrorFallback';
 function StatCard({ label, value }: { label: string; value: string | number }) {
   return (
     <Card className="p-4">
-      <p className="text-sm font-medium text-gray-500 dark:text-gray-400">{label}</p>
+      <p className="text-sm font-medium text-gray-500 dark:text-gray-300">{label}</p>
       <p className="mt-1 text-2xl font-semibold text-gray-900 dark:text-gray-100">{value}</p>
     </Card>
   );
@@ -53,11 +53,11 @@ export function StatsGrid() {
       {/* By Urgency */}
       {stats.byUrgency.length > 0 && (
         <div>
-          <h3 className="mb-2 text-sm font-medium text-gray-500 dark:text-gray-400">{t('dashboard.stats.byUrgency')}</h3>
+          <h2 className="mb-2 text-sm font-medium text-gray-500 dark:text-gray-300">{t('dashboard.stats.byUrgency')}</h2>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
             {stats.byUrgency.map(({ urgency, count }) => (
               <Card key={urgency} className="p-3">
-                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">{urgency}</p>
+                <p className="text-sm font-medium text-gray-500 dark:text-gray-300">{urgency}</p>
                 <p className="mt-1 text-xl font-semibold text-gray-900 dark:text-gray-100">{count}</p>
               </Card>
             ))}
@@ -68,11 +68,11 @@ export function StatsGrid() {
       {/* By Specialist */}
       {stats.bySpecialist.length > 0 && (
         <div>
-          <h3 className="mb-2 text-sm font-medium text-gray-500 dark:text-gray-400">{t('dashboard.stats.bySpecialist')}</h3>
+          <h2 className="mb-2 text-sm font-medium text-gray-500 dark:text-gray-300">{t('dashboard.stats.bySpecialist')}</h2>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
             {stats.bySpecialist.map(({ specialist, count }) => (
               <Card key={specialist} className="p-3">
-                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">{specialist}</p>
+                <p className="text-sm font-medium text-gray-500 dark:text-gray-300">{specialist}</p>
                 <p className="mt-1 text-xl font-semibold text-gray-900 dark:text-gray-100">{count}</p>
               </Card>
             ))}

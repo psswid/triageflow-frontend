@@ -60,7 +60,7 @@ export default function LandingPage() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/register"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent-500 text-white px-8 py-4 text-lg font-semibold hover:bg-accent-600 transition-colors shadow-lg shadow-accent-500/30"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent-600 text-white px-8 py-4 text-lg font-semibold hover:bg-accent-700 transition-colors shadow-lg shadow-accent-600/30"
               >
                 {t('hero.cta')} <ArrowRight className="w-5 h-5" />
               </Link>
@@ -95,14 +95,14 @@ export default function LandingPage() {
                 <h3 className="text-lg font-semibold font-heading text-gray-900 dark:text-gray-100">
                   {t(`features.${key}.title`)}
                 </h3>
-                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                <p className="mt-2 text-sm text-gray-500 dark:text-gray-300 leading-relaxed">
                   {t(`features.${key}.description`)}
                 </p>
               </div>
             ))}
           </div>
 
-          <p className="mt-8 text-center text-sm text-gray-400 dark:text-gray-500 max-w-2xl mx-auto">
+          <p className="mt-8 text-center text-sm text-gray-400 dark:text-gray-400 max-w-2xl mx-auto">
             <FlaskConical className="w-4 h-4 inline-block mr-1" />
             {t('features.disclaimer')}
           </p>
@@ -139,7 +139,7 @@ export default function LandingPage() {
             ))}
           </div>
 
-          <p className="mt-10 text-center text-sm text-gray-400 dark:text-gray-500 flex items-center justify-center gap-2">
+          <p className="mt-10 text-center text-sm text-gray-400 dark:text-gray-400 flex items-center justify-center gap-2">
             <FlaskConical className="w-4 h-4" />
             {t('techStack.disclaimer')}
           </p>

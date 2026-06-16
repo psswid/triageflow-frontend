@@ -39,7 +39,7 @@ export function LoginPage() {
   const handleSubmit = (e: FormEvent) => { e.preventDefault(); setError(null); loginMutation.mutate({ email, password }); };
 
   return (
-    <div className="mx-auto max-w-md py-12">
+    <main className="mx-auto max-w-md py-12">
       <Card>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{t('login.title')}</h1>
         {justRegistered && (
@@ -67,11 +67,11 @@ export function LoginPage() {
         </form>
         <p className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
           {t('login.noAccount')}{' '}
-          <Link to="/register" className="text-blue-600 hover:underline dark:text-blue-400">
+          <Link to="/register" className="text-blue-600 underline hover:no-underline dark:text-blue-400">
             {t('login.registerLink')}
           </Link>
         </p>
       </Card>
-    </div>
+    </main>
   );
 }

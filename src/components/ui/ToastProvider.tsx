@@ -41,6 +41,7 @@ export function ToastProvider({ children }: { readonly children: ReactNode }) {
     <ToastContext.Provider value={{ toast }}>
       {children}
       <div
+        role="status"
         className="fixed bottom-4 right-4 z-50 flex flex-col gap-2 max-w-sm"
         aria-live="polite"
         aria-label="Notifications"

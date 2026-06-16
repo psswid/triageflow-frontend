@@ -54,7 +54,7 @@ export function MarketingHeader() {
             </Link>
             <Link
               to="/register"
-              className="rounded-lg bg-accent-500 px-3 py-1.5 text-sm font-medium text-white hover:bg-accent-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500 transition-colors"
+              className="rounded-lg bg-accent-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-accent-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600 transition-colors"
             >
               {t('common:nav.register')}
             </Link>
@@ -74,7 +74,13 @@ export function MarketingHeader() {
       {/* Mobile slide-in drawer */}
       {menuOpen && (
         <div className="md:hidden fixed inset-0 z-50">
-          <div className="fixed inset-0 bg-black/50" onClick={() => setMenuOpen(false)} />
+          <button
+            className="fixed inset-0 bg-black/50 cursor-default"
+            onClick={() => setMenuOpen(false)}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setMenuOpen(false); }}}
+            aria-label={t('header.closeMenu')}
+            type="button"
+          />
           <div className="fixed right-0 top-0 bottom-0 w-64 bg-white dark:bg-gray-950 border-l border-gray-200 dark:border-gray-800 p-6 pt-20">
             <nav className="flex flex-col gap-4" aria-label="Mobile navigation">
               <NavLink to="/about" className={navLinkClass} onClick={() => setMenuOpen(false)}>
@@ -87,7 +93,7 @@ export function MarketingHeader() {
               <Link to="/login" className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100" onClick={() => setMenuOpen(false)}>
                 {t('common:nav.login')}
               </Link>
-              <Link to="/register" className="rounded-lg bg-accent-500 px-3 py-1.5 text-sm font-medium text-white hover:bg-accent-600 text-center" onClick={() => setMenuOpen(false)}>
+              <Link to="/register" className="rounded-lg bg-accent-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-accent-700 text-center" onClick={() => setMenuOpen(false)}>
                 {t('common:nav.register')}
               </Link>
               <hr className="border-gray-200 dark:border-gray-800" />

@@ -17,7 +17,7 @@ describe('HowItWorksPage', () => {
 
   it('renders 4 step cards', () => {
     render(<HowItWorksPage />, { wrapper })
-    const steps = screen.getAllByRole('heading', { level: 3 })
+    const steps = screen.getAllByRole('heading', { level: 2 })
     expect(steps.length).toBe(4)
   })
 

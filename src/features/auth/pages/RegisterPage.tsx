@@ -52,7 +52,7 @@ export function RegisterPage() {
   };
 
   return (
-    <div className="mx-auto max-w-md py-12">
+    <main className="mx-auto max-w-md py-12">
       <Card>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{t('register.title')}</h1>
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
@@ -65,11 +65,11 @@ export function RegisterPage() {
         </form>
         <p className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
           {t('register.haveAccount')}{' '}
-          <Link to="/login" className="text-blue-600 hover:underline dark:text-blue-400">
+          <Link to="/login" className="text-blue-600 underline hover:no-underline dark:text-blue-400">
             {t('register.loginLink')}
           </Link>
         </p>
       </Card>
-    </div>
+    </main>
   );
 }

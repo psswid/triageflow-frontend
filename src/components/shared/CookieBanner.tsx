@@ -21,7 +21,7 @@ export function CookieBanner() {
           </p>
           <button
             onClick={handleAccept}
-            className="shrink-0 rounded-lg bg-accent-500 px-4 py-2 text-sm font-medium text-white hover:bg-accent-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500 transition-colors"
+            className="shrink-0 rounded-lg bg-accent-600 px-4 py-2 text-sm font-medium text-white hover:bg-accent-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-600 transition-colors"
           >
             {t('cookieBanner.accept')}
           </button>

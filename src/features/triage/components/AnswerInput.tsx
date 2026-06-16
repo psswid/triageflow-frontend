@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { clsx } from 'clsx';
 import { useTranslation } from 'react-i18next';
 import { Button } from '../../../components/ui/Button';
@@ -21,6 +21,13 @@ export function AnswerInput({
 }: AnswerInputProps) {
   const { t } = useTranslation('triage');
   const [value, setValue] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!isSubmitting) {
+      inputRef.current?.focus();
+    }
+  }, [isSubmitting]);
 
   const handleSubmit = useCallback(() => {
     const trimmed = value.trim();
@@ -61,7 +68,7 @@ export function AnswerInput({
           maxLength={MAX_LENGTH}
           placeholder={t('answerInput.placeholder')}
           disabled={isSubmitting}
-          autoFocus
+          ref={inputRef}
           className={clsx(
             'flex-1 rounded-lg border px-4 py-2 text-gray-900 placeholder-gray-400 transition-colors',
             'focus:outline-none focus:ring-2 focus:ring-blue-500',

@@ -16,7 +16,7 @@ export default function HowItWorksPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold font-heading text-gray-900 dark:text-gray-100">{t('title')}</h1>
-          <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">{t('subtitle')}</p>
+          <p className="mt-4 text-lg text-gray-500 dark:text-gray-300">{t('subtitle')}</p>
         </div>
 
         {/* Timeline */}
@@ -40,12 +40,12 @@ export default function HowItWorksPage() {
         <div className="mt-16 text-center">
           <Link
             to="/register"
-            className="inline-flex items-center gap-2 rounded-xl bg-accent-500 text-white px-8 py-4 text-lg font-semibold hover:bg-accent-600 transition-colors shadow-lg shadow-accent-500/30"
+            className="inline-flex items-center gap-2 rounded-xl bg-accent-600 text-white px-8 py-4 text-lg font-semibold hover:bg-accent-700 transition-colors shadow-lg shadow-accent-600/30"
           >
             {t('cta')} <ArrowRight className="w-5 h-5" />
           </Link>
 
-          <p className="mt-6 text-sm text-gray-400 dark:text-gray-500 flex items-center justify-center gap-2">
+          <p className="mt-6 text-sm text-gray-400 dark:text-gray-400 flex items-center justify-center gap-2">
             <FlaskConical className="w-4 h-4" />
             {t('disclaimer')}
           </p>
