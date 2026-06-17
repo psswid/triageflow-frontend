@@ -1,24 +1,25 @@
+import type { TFunction } from 'i18next';
 import { isRouteErrorResponse, useRouteError, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button } from '../ui/Button';
 
-function errorMessage(error: unknown, t: (key: string, fallback?: string) => string): string {
+function errorMessage(error: unknown, t: TFunction): string {
   if (isRouteErrorResponse(error)) {
     if (error.status === 404) return t('notFound.message');
-    if (error.status === 403) return t('error.accessDenied', 'You do not have permission to access this page.');
-    if (error.status === 401) return t('error.unauthorized', 'Please log in to access this page.');
-    return error.statusText || t('error.unexpected', 'An unexpected error occurred.');
+    if (error.status === 403) return t('error.accessDenied', { defaultValue: 'You do not have permission to access this page.' });
+    if (error.status === 401) return t('error.unauthorized', { defaultValue: 'Please log in to access this page.' });
+    return error.statusText || t('error.unexpected', { defaultValue: 'An unexpected error occurred.' });
   }
 
   if (error instanceof Error) return error.message;
-  return t('error.unexpected', 'An unexpected error occurred.');
+  return t('error.unexpected', { defaultValue: 'An unexpected error occurred.' });
 }
 
-function errorTitle(error: unknown, t: (key: string, fallback?: string) => string): string {
+function errorTitle(error: unknown, t: TFunction): string {
   if (isRouteErrorResponse(error)) {
     if (error.status === 404) return t('notFound.title');
-    if (error.status === 403) return t('error.accessDeniedTitle', 'Access Denied');
-    if (error.status === 401) return t('error.unauthorizedTitle', 'Unauthorized');
+    if (error.status === 403) return t('error.accessDeniedTitle', { defaultValue: 'Access Denied' });
+    if (error.status === 401) return t('error.unauthorizedTitle', { defaultValue: 'Unauthorized' });
     return t('error.title');
   }
 

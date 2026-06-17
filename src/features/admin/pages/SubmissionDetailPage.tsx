@@ -22,7 +22,7 @@ const URGENCY_BADGE: Record<string, 'low' | 'medium' | 'high' | 'emergency'> = {
   EMERGENCY: 'emergency',
 };
 
-function ConversationBubble({ message, t }: { message: ConversationMessage; t: (key: string) => string }) {
+function ConversationBubble({ message, t }: { message: ConversationMessage; t: (key: string, options?: { defaultValue?: string }) => string }) {
   const isUser = message.type === 'initial_description' || message.type === 'answer';
   const isResult = message.type === 'result';
 
@@ -38,10 +38,10 @@ function ConversationBubble({ message, t }: { message: ConversationMessage; t: (
         }`}
       >
         <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
-          {message.type === 'initial_description' && t('conversation.initialDescription', 'Initial Description')}
-          {message.type === 'question' && t('conversation.aiQuestion', 'AI Question')}
-          {message.type === 'answer' && t('conversation.userAnswer', 'User Answer')}
-          {message.type === 'result' && t('conversation.triageResult', 'Triage Result')}
+          {message.type === 'initial_description' && t('conversation.initialDescription', { defaultValue: 'Initial Description' })}
+          {message.type === 'question' && t('conversation.aiQuestion', { defaultValue: 'AI Question' })}
+          {message.type === 'answer' && t('conversation.userAnswer', { defaultValue: 'User Answer' })}
+          {message.type === 'result' && t('conversation.triageResult', { defaultValue: 'Triage Result' })}
         </p>
         <p className="text-sm text-gray-900 dark:text-gray-100 whitespace-pre-wrap">{message.content}</p>
         <p className="mt-1 text-xs text-gray-400 dark:text-gray-500">
